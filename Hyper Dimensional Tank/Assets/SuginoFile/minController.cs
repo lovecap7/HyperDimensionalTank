@@ -10,7 +10,7 @@ public class minController : MonoBehaviour
         if(collision.gameObject.tag == "Bullet")
         {
             count++;
-            if(count > 2) 
+            if(count > 1) 
             {
                 Destroy(gameObject);
             }
