@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 788534421}
-  rotationSpeed: {x: 5, y: 5}
+  rotationSpeed: {x: 0, y: 0}
 --- !u!1 &1794354910
 GameObject:
   m_ObjectHideFlags: 0
