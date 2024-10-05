@@ -76,6 +76,7 @@ public class NewBehaviourScript : MonoBehaviour
             if (cursorNum == 2)
             {
                 SceneManager.LoadScene("TestScene");
+               // FadeManager.Instance.LoodScene("ModeSelectScene",1f);
             }
             if (cursorNum == 1)
             {
