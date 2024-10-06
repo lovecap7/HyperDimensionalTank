@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Timer : MonoBehaviour
 
         if(remaining < 0 )
         {
-
+            SceneManager.LoadScene("SingleResultScene");
         }
         
     }
