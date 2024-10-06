@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b02765c99b591540bc3c2d8aaaad6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 60
+  timeLimit: 10
   timerText: {fileID: 1164297689}
 --- !u!4 &1156396605
 Transform:
