@@ -87,6 +87,10 @@ public class PlayerScript : MonoBehaviour
     //InputSystem
     private PlayerControl playerControl;
 
+    //SE
+    public AudioClip shotSound;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +102,8 @@ public class PlayerScript : MonoBehaviour
         playerControl = new PlayerControl();
         playerControl.Enable();
         tempSpeed = moveSpeed;
+        //Component‚ğæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
     public void HeadRotationLeft(InputAction.CallbackContext context)
     {
@@ -256,6 +262,8 @@ public class PlayerScript : MonoBehaviour
         moveSpeed = 0;
         if (isShotNomal)
         {
+            //‰¹(sound1)‚ğ–Â‚ç‚·
+            audioSource.PlayOneShot(shotSound);
             //’e‚Ì”­Ë‚·‚éêŠ‚ğæ“¾‚·‚é
             Vector3 bulletPosition = shotPoint.transform.position;
             //
