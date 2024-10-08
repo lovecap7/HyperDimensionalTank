@@ -233,22 +233,25 @@ public class PlayerScript : MonoBehaviour
         }
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
-        if (isCharge && beamGauge < 100.0f)
+        if (isCharge)
         {
            if(beamGauge >= 100)
             {
-                isCharge = false;
+                //isCharge = false;
                 beamGauge = 100.0f;
                 isShotBeam = true;
                 chargeEffect.SetActive(false);
                 maxEffect.SetActive(true);
                 audioSource.Stop();
-                return;
             }
-            beamGauge += chargeValue;
-            chargeEffect.SetActive(true);
+            else
+            {
+                beamGauge += chargeValue;
+                chargeEffect.SetActive(true);
+            }
             isShotNomal = false;
             isShotStrong = false;
+            return;
         }
        
         //プレイヤーの移動
