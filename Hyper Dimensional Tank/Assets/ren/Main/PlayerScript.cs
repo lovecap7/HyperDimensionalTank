@@ -233,31 +233,24 @@ public class PlayerScript : MonoBehaviour
         }
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
-        if (isCharge)
+        if (isCharge && beamGauge < 100.0f)
         {
-            if (beamGauge >= 100.0f)
+           if(beamGauge >= 100)
             {
+                isCharge = false;
                 beamGauge = 100.0f;
                 isShotBeam = true;
                 chargeEffect.SetActive(false);
                 maxEffect.SetActive(true);
-               
+                audioSource.Stop();
+                return;
             }
-            else
-            {
-                beamGauge += chargeValue;
-                chargeEffect.SetActive(true);
-            }
+            beamGauge += chargeValue;
+            chargeEffect.SetActive(true);
             isShotNomal = false;
             isShotStrong = false;
-            return;
         }
-
        
-
-
-
-
         //プレイヤーの移動
         playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
         //Quaternion.AngleAxis(度数法, 軸);
@@ -316,17 +309,12 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (beamGauge >= 100.0f)
-            {
-               return;
-            }
             //押した瞬間の処理
             isCharge = true;
             audioSource.Play();
            
-
         }
-        if (context.canceled || beamGauge >= 100.0f)
+        if (context.canceled)
         {
             //離した瞬間の処理
             isCharge = false;
