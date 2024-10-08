@@ -966,7 +966,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164297687}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1529,6 +1529,10 @@ PrefabInstance:
       propertyPath: headObj
       value: 
       objectReference: {fileID: 291368891}
+    - target: {fileID: 6630177580329262287, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
+      propertyPath: maxEffect
+      value: 
+      objectReference: {fileID: 3744133877081091469, guid: 9dc7811f6c438064fabbbced948a7824, type: 3}
     - target: {fileID: 7790666743887930296, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
       value: 1
