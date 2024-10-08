@@ -70,6 +70,8 @@ public class PlayerScript : MonoBehaviour
     private bool isShotStrong = true;
     //チャージエフェクト
     [SerializeField] private GameObject chargeEffect;
+    //MAXの時のエフェクト
+    [SerializeField] private GameObject maxEffect;
 
     //ビーム(必殺技)
     [SerializeField] private GameObject bulletBeam;
@@ -97,6 +99,7 @@ public class PlayerScript : MonoBehaviour
     {
         beamCharge.SetActive(false);
         chargeEffect.SetActive(false);
+        maxEffect.SetActive(false);
         playerRb = this.transform.GetComponent<Rigidbody>();
         //moveVec = new Vector3(0,0,moveSpeed);
         head = transform.GetChild(0);
@@ -198,6 +201,7 @@ public class PlayerScript : MonoBehaviour
             if (beamFreamCount > 60)
             {
                 beamCharge.SetActive(false);
+                maxEffect.SetActive(false);
                 //弾の発射する場所を取得する
                 Vector3 bulletPosition = shotPoint.transform.position;
                 //
@@ -236,6 +240,8 @@ public class PlayerScript : MonoBehaviour
                 beamGauge = 100.0f;
                 isShotBeam = true;
                 chargeEffect.SetActive(false);
+                maxEffect.SetActive(true);
+               
             }
             else
             {
@@ -310,12 +316,17 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.performed)
         {
+            if (beamGauge >= 100.0f)
+            {
+               return;
+            }
             //押した瞬間の処理
             isCharge = true;
             audioSource.Play();
+           
 
         }
-        if (context.canceled)
+        if (context.canceled || beamGauge >= 100.0f)
         {
             //離した瞬間の処理
             isCharge = false;
@@ -345,6 +356,7 @@ public class PlayerScript : MonoBehaviour
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
         if (layerName != playerIndex)
         {
+          
             if (other.gameObject.tag == "Bullet")
             {
                 myHp -= 5;
