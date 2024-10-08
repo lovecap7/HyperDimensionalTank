@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public GameObject scoreObject = null; // Textオブジェクト
-
     private int totalScore = 0;
 
     TextMeshProUGUI scoreText = null;
@@ -20,13 +19,18 @@ public class ScoreManager : MonoBehaviour
         //// テキストの表示を入れ替える
         //scoreText.text = "Score00000" + score;
         // オブジェクトからTextコンポーネントを取得
-         scoreText = scoreObject.GetComponent<TextMeshProUGUI>();
+         scoreText = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("Score", totalScore);
+        PlayerPrefs.Save();
     }
 
     // スコアを増加させるメソッド

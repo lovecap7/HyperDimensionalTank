@@ -9,7 +9,8 @@ public class SingleplayWall : MonoBehaviour
     private int HP;
 
     // “_”‚Ì—Ê(ˆêŒÂ‰ó‚·‚½‚Ñ‚Éˆê“_‘‚¦‚é)
-    public static int scoreValue = 1;
+    [SerializeField]
+    private int scoreValue = 1;
     private ScoreManager ScoreManager;
 
     [SerializeField]

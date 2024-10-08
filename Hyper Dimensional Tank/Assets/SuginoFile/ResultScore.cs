@@ -8,11 +8,10 @@ public class ResultScore : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     int score;
-    public ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
-        score = scoreManager.GetScore();
+        score = PlayerPrefs.GetInt("Score",0);
         ScoreText.text = string.Format("Score:{0}",score);
     }
 
