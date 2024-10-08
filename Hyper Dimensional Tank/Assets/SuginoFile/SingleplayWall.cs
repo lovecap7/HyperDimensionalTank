@@ -6,9 +6,10 @@ public class SingleplayWall : MonoBehaviour
 {
     private static int count = 0;
     [SerializeField]
-    private int sCount;
+    private int HP;
 
-    public static int scoreValue;
+    // “_”‚Ì—Ê(ˆêŒÂ‰ó‚·‚½‚Ñ‚Éˆê“_‘‚¦‚é)
+    public static int scoreValue = 1;
     private ScoreManager ScoreManager;
 
     [SerializeField]
@@ -21,17 +22,14 @@ public class SingleplayWall : MonoBehaviour
         ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
-    public static int getScore()
-    {
-        return scoreValue;
-    }
+    
 
-private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")
         {
             count++;
-            if (count >= sCount)
+            if (count >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -42,13 +40,12 @@ private void OnTriggerEnter(Collider other)
         if (other.gameObject.tag == "StrongBullet")
         {
             count += 2;
-            if (count >= sCount)
+            if (count >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 ScoreManager.AddScore(scoreValue);
             }
-
         }
     }
 
@@ -57,13 +54,12 @@ private void OnTriggerEnter(Collider other)
         if (other.gameObject.tag == "Beam")
         {
             count++;
-            if (count >= sCount)
+            if (count >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 ScoreManager.AddScore(scoreValue);
             }
-
         }
     }
 }

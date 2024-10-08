@@ -305,8 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &426616810
 PrefabInstance:
@@ -391,8 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &479438935
 GameObject:
@@ -582,8 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &773200840
 PrefabInstance:
@@ -668,8 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &773481163
 GameObject:
@@ -857,8 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &984002508
 GameObject:
@@ -1302,8 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1493038327
 PrefabInstance:
@@ -1388,8 +1382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1774104955
 PrefabInstance:
@@ -1474,8 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1936536031
 PrefabInstance:
@@ -1737,8 +1729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sCount: 2
-  scoreValue: 50
+  HP: 2
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
