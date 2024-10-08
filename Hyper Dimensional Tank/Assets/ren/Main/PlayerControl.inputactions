@@ -299,11 +299,33 @@
                 },
                 {
                     "name": "",
+                    "id": "084fd6db-76e5-4ed9-8172-cc6b518406bc",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeadRotationLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "40cec2a4-24fe-406a-9aaf-097a4cef0b5b",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "HeadRotationRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4377371-f1cb-40ef-aec5-300ed8ad1bbf",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "HeadRotationRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -370,6 +392,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Charge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7980328b-1669-4887-af74-813629a50520",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Charge",
                     "isComposite": false,
                     "isPartOfComposite": false

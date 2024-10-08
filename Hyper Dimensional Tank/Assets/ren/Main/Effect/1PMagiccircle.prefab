@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.073806904, b: 0.5377358, a: 1}
+      maxColor: {r: 0.5372549, g: 0.2642533, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5062,7 +5062,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.36320752, g: 0.45152184, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.8435935, b: 0.36470592, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9959,7 +9959,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.36320752, g: 0.45152184, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.36470592, b: 0.40358266, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14799,7 +14799,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.05725074, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.29682127, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19601,7 +19601,7 @@ GameObject:
   - component: {fileID: 797784518864179116}
   - component: {fileID: 5796355061092580784}
   m_Layer: 0
-  m_Name: ChargeEff
+  m_Name: 1PMagiccircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19817,7 +19817,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.33490568, g: 0.4935276, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.33333337, b: 0.36846992, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -24705,7 +24705,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.33490568, g: 0.4935276, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.39008668, b: 0.33333337, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

@@ -88,7 +88,8 @@ public class PlayerScript : MonoBehaviour
     private PlayerControl playerControl;
 
     //SE
-    public AudioClip shotSound;
+    public AudioClip[] seSound = new AudioClip[2];
+    //public AudioClip beamSound;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -263,7 +264,7 @@ public class PlayerScript : MonoBehaviour
         if (isShotNomal)
         {
             //‰¹(sound1)‚ğ–Â‚ç‚·
-            audioSource.PlayOneShot(shotSound);
+            audioSource.PlayOneShot(seSound[0]);
             //’e‚Ì”­Ë‚·‚éêŠ‚ğæ“¾‚·‚é
             Vector3 bulletPosition = shotPoint.transform.position;
             //
@@ -280,6 +281,8 @@ public class PlayerScript : MonoBehaviour
         moveSpeed = 0;
         if (isShotStrong)
         {
+            //‰¹(sound1)‚ğ–Â‚ç‚·
+            audioSource.PlayOneShot(seSound[0]);
             //’e‚Ì”­Ë‚·‚éêŠ‚ğæ“¾‚·‚é
             Vector3 bulletPosition = shotPoint.transform.position;
             //
@@ -296,6 +299,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.started && isShotBeam) // ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«
         {
+            //‰¹(sound1)‚ğ–Â‚ç‚·
+            audioSource.PlayOneShot(seSound[1]);
             beamCharge.SetActive(true);
             isBeamCount = true;
         }
@@ -307,13 +312,15 @@ public class PlayerScript : MonoBehaviour
         {
             //‰Ÿ‚µ‚½uŠÔ‚Ìˆ—
             isCharge = true;
-            
+            audioSource.Play();
+
         }
         if (context.canceled)
         {
             //—£‚µ‚½uŠÔ‚Ìˆ—
             isCharge = false;
             chargeEffect.SetActive(false);
+            audioSource.Stop();
         }
        
        
