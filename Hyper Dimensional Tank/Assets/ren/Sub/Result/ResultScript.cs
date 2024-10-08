@@ -100,7 +100,8 @@ public class ResultScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("‰E");
+                //ƒV[ƒ“ˆÚ“®
+                SceneManager.LoadScene("ModeSelectScene");
             }
         }
     }
