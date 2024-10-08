@@ -21,12 +21,10 @@ public class ItemCom : MonoBehaviour
     {
         if(other.gameObject.name == "Player1")
         {
-            StartCoroutine("SpeedUp");
             Destroy(gameObject);
         }
         if(other.gameObject.name == "Player2")
         {
-            StartCoroutine("SpeedUp");
             Destroy(gameObject);
         }
     }
