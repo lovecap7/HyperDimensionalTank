@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneController : MonoBehaviour
+
+
+public class Fade : MonoBehaviour
 {
-    public GameObject fade;
+    public float fadeSpeed = 0.01f;
+    float alfa;
     // Start is called before the first frame update
     void Start()
     {
-        //if (!FadeManager.isFadeInstance)
-        //{
-
-        //}
+        
     }
 
     // Update is called once per frame

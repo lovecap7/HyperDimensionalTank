@@ -19,10 +19,12 @@ public class NewBehaviourScript : MonoBehaviour
     GameObject singleObj;
     GameObject multiObj;
     GameObject titleObj;
-
+    //float alfa;
+    //float speed = 0.01f;
     // Start is called before the first frame update
     void Start()
     {
+
         singleObj = GameObject.Find("Canvas/Single").gameObject;
         multiObj = GameObject.Find("Canvas/Multi").gameObject;
         titleObj = GameObject.Find("Canvas/Title").gameObject;
@@ -76,7 +78,8 @@ public class NewBehaviourScript : MonoBehaviour
             if (cursorNum == 2)
             {
                 SceneManager.LoadScene("TestScene");
-               // FadeManager.Instance.LoodScene("ModeSelectScene",1f);
+
+               
             }
             if (cursorNum == 1)
             {
