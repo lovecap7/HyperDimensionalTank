@@ -40,7 +40,7 @@ public class CameraControl : MonoBehaviour
             //Vector3 nowMouseValue = Input.mousePosition - lastMousePosition;
 
             var newAngle = Vector3.zero;
-            newAngle.x = rotationSpeed.x * inputMove.x;
+            newAngle.x = rotationSpeed.x * inputMove.x * Time.deltaTime;
             //newAngle.y = rotationSpeed.y * nowMouseValue.y;
 
             transform.RotateAround(Player.transform.position, Vector3.up, newAngle.x);
@@ -50,10 +50,24 @@ public class CameraControl : MonoBehaviour
         //lastMousePosition = Input.mousePosition;
     }
 
-    public void OnCameraMove(InputAction.CallbackContext context)
+    public void OnCameraMoveRight(InputAction.CallbackContext context)
     {
         // 入力値を保持しておく
-        inputMove = context.ReadValue<Vector2>();
+        inputMove = new Vector2(50.0f,0);
+        if (context.started) // ボタンを押したとき
+        {
+            isCameraMove = true;
+        }
+        else if (context.canceled) // ボタンを離したとき
+        {
+            isCameraMove = false;
+        }
+    }
+
+    public void OnCameraMoveLeft(InputAction.CallbackContext context)
+    {
+        // 入力値を保持しておく
+        inputMove = new Vector2(-50.0f, 0);
         if (context.started) // ボタンを押したとき
         {
             isCameraMove = true;

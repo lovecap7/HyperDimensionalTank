@@ -15,6 +15,10 @@ public class PlayerScript : MonoBehaviour
 {
     public string playerIndex;
 
+    //スタートするまで動けない
+    private StartCount startCount;
+    [SerializeField] private GameObject startCountObj;
+
     //プレイヤーの動き
     private float moveSpeed = 20f;
     private float tempSpeed = 0f;
@@ -97,6 +101,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startCount = startCountObj.GetComponent<StartCount>();
         beamCharge.SetActive(false);
         chargeEffect.SetActive(false);
         maxEffect.SetActive(false);
@@ -135,7 +140,10 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (startCount != null)
+        {
+            return;
+        }
 
         if (myHp <= 0)
         {
@@ -262,6 +270,10 @@ public class PlayerScript : MonoBehaviour
  
     public void OnShotNomal(InputAction.CallbackContext context)
     {
+        if (startCount != null)
+        {
+            return;
+        }
         moveSpeed = 0;
         if (isShotNomal)
         {
@@ -280,6 +292,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnShotStrong(InputAction.CallbackContext context)
     {
+        if (startCount != null)
+        {
+            return;
+        }
         moveSpeed = 0;
         if (isShotStrong)
         {
@@ -310,6 +326,10 @@ public class PlayerScript : MonoBehaviour
 
     public void OnCharge(InputAction.CallbackContext context)
     {
+        if (startCount != null)
+        {
+            return;
+        }
         if (context.performed)
         {
             //押した瞬間の処理
