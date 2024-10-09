@@ -16,6 +16,7 @@ public class Title : MonoBehaviour
     private TextMeshProUGUI optionText; 
     GameObject gameStartTextObj;
     GameObject optionTextObj;
+    GameObject fadePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Title : MonoBehaviour
         cursor = GameObject.Find("Canvas/Cursor").gameObject;
         gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
         optionText = optionTextObj.GetComponent<TextMeshProUGUI>();
+        fadePanel = GameObject.Find("Canvas/Panel").gameObject;
     }
 
     // Update is called once per frame
