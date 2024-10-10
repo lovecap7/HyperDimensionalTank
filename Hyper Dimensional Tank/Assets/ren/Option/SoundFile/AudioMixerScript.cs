@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class AudioMixerScript : MonoBehaviour
 {
-    //[SerializeField] private GameObject soundPanel;
+    private Vector2 inputMove;
+    private int selectIndex = 4;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider bgmSlider;
@@ -16,7 +19,7 @@ public class AudioMixerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //soundPanel.SetActive(false);
+        
         masterSlider.value = PlayerPrefs.GetFloat("MasterValue", 1f);
         bgmSlider.value = PlayerPrefs.GetFloat("BgmValue", 1f);
         seSlider.value = PlayerPrefs.GetFloat("SeValue", 1f);
@@ -27,7 +30,7 @@ public class AudioMixerScript : MonoBehaviour
                 value = Mathf.Clamp01(value);
 
                 float decibel = 20f * Mathf.Log10(value);
-                decibel = Mathf.Clamp(decibel, -80f, 0f);
+                decibel = Mathf.Clamp(decibel, -100f, 0f);
                 PlayerPrefs.SetFloat("MasterDecibel", decibel);
                 audioMixer.SetFloat("Master_Volume", decibel);
             });
@@ -39,7 +42,7 @@ public class AudioMixerScript : MonoBehaviour
                 value = Mathf.Clamp01(value);
 
                 float decibel = 20f * Mathf.Log10(value);
-                decibel = Mathf.Clamp(decibel, -80f, 0f);
+                decibel = Mathf.Clamp(decibel, -100f, 0f);
                 PlayerPrefs.SetFloat("BgmDecibel", decibel);
                 audioMixer.SetFloat("BGM_Volume", decibel);
             });
@@ -51,7 +54,7 @@ public class AudioMixerScript : MonoBehaviour
                 value = Mathf.Clamp01(value);
 
                 float decibel = 20f * Mathf.Log10(value);
-                decibel = Mathf.Clamp(decibel, -80f, 0f);
+                decibel = Mathf.Clamp(decibel, -100f, 0f);
                 PlayerPrefs.SetFloat("SeDecibel", decibel);
                 audioMixer.SetFloat("SE_Volume", decibel);
             });
@@ -70,22 +73,54 @@ public class AudioMixerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(selectIndex == 4)
+        {
+            Debug.Log("Master");
+            masterSlider.value += 0.001f * inputMove.x;
+        }
+        if (selectIndex == 3)
+        {
+            Debug.Log("BGM");
+            bgmSlider.value += 0.001f * inputMove.x;
+        }
+        if (selectIndex == 2)
+        {
+            Debug.Log("SE");
+            seSlider.value += 0.001f * inputMove.x;
+        }
     }
 
-    public void OnSaveValue()
+    public void OnSaveValue(InputAction.CallbackContext context)
     {
-        float masterValue = masterSlider.value;
-        PlayerPrefs.SetFloat("MasterValue", masterValue);
-        float bgmValue = bgmSlider.value;
-        PlayerPrefs.SetFloat("BgmValue", bgmValue);
-        float seValue = seSlider.value;
-        PlayerPrefs.SetFloat("SeValue", seValue);
-        //soundPanel.SetActive(false);
+        if (selectIndex == 1)
+        {
+            Debug.Log("ï€ë∂");
+            float masterValue = masterSlider.value;
+            PlayerPrefs.SetFloat("MasterValue", masterValue);
+            float bgmValue = bgmSlider.value;
+            PlayerPrefs.SetFloat("BgmValue", bgmValue);
+            float seValue = seSlider.value;
+            PlayerPrefs.SetFloat("SeValue", seValue);
+        }
     }
 
-    public void OnPanelTrue()
+    public void OnChangeValue(InputAction.CallbackContext context)
     {
-        //soundPanel.SetActive(true);
+        // ì¸óÕílÇï€éùÇµÇƒÇ®Ç≠
+        inputMove = context.ReadValue<Vector2>();
+        if (context.started) // É{É^ÉìÇâüÇµÇΩÇ∆Ç´
+        {
+            Debug.Log(inputMove);
+            selectIndex += (int)inputMove.y;
+        }
+           
+        if (selectIndex > 4)
+        {
+            selectIndex = 4;
+        }
+        if (selectIndex < 0)
+        {
+            selectIndex = 0;
+        }
     }
 }
