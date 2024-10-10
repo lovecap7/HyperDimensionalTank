@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class AudioMixerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject soundPanel;
+    //[SerializeField] private GameObject soundPanel;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider bgmSlider;
@@ -16,10 +16,10 @@ public class AudioMixerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundPanel.SetActive(false);
-        masterSlider.value = PlayerPrefs.GetFloat("MasterValue", 0.2f);
-        bgmSlider.value = PlayerPrefs.GetFloat("BgmValue", 0.2f);
-        seSlider.value = PlayerPrefs.GetFloat("SeValue", 0.2f);
+        //soundPanel.SetActive(false);
+        masterSlider.value = PlayerPrefs.GetFloat("MasterValue", 1f);
+        bgmSlider.value = PlayerPrefs.GetFloat("BgmValue", 1f);
+        seSlider.value = PlayerPrefs.GetFloat("SeValue", 1f);
         if (masterSlider != null)
         {
             masterSlider.onValueChanged.AddListener((value) =>
@@ -81,11 +81,11 @@ public class AudioMixerScript : MonoBehaviour
         PlayerPrefs.SetFloat("BgmValue", bgmValue);
         float seValue = seSlider.value;
         PlayerPrefs.SetFloat("SeValue", seValue);
-        soundPanel.SetActive(false);
+        //soundPanel.SetActive(false);
     }
 
     public void OnPanelTrue()
     {
-        soundPanel.SetActive(true);
+        //soundPanel.SetActive(true);
     }
 }
