@@ -132,6 +132,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3019271044112533229, guid: 6c4518854fb7f4e428a69a0bf579fced, type: 3}
+      propertyPath: corsol
+      value: 
+      objectReference: {fileID: 905338146}
+    - target: {fileID: 3019271044112533229, guid: 6c4518854fb7f4e428a69a0bf579fced, type: 3}
       propertyPath: seSlider
       value: 
       objectReference: {fileID: 1509995904}
@@ -331,8 +335,8 @@ RectTransform:
   m_GameObject: {fileID: 905338146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 150782268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -487,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1138077043107393027, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50.999992
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2081899659353682048, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_fontAsset
@@ -517,13 +521,17 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4300907964196395105, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4486075875021248136, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_Name
       value: OptionPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5114119831112182107, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 151
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5154194728422982482, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -531,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154194728422982482, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154
+      value: -155
       objectReference: {fileID: 0}
     - target: {fileID: 5227184443781275430, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_Pivot.x
@@ -655,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8941460568357160039, guid: 0b90cfad9f42b644092fe9acb066e721, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49.000008
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

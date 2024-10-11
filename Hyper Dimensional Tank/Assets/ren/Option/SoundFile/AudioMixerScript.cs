@@ -11,6 +11,7 @@ public class AudioMixerScript : MonoBehaviour
 {
     private Vector2 inputMove;
     private int selectIndex = 4;
+    [SerializeField] GameObject corsol;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider bgmSlider;
@@ -77,16 +78,19 @@ public class AudioMixerScript : MonoBehaviour
         {
             Debug.Log("Master");
             masterSlider.value += 0.001f * inputMove.x;
+            corsol.transform.localPosition = new Vector3(-300,150,0);
         }
         if (selectIndex == 3)
         {
             Debug.Log("BGM");
             bgmSlider.value += 0.001f * inputMove.x;
+            corsol.transform.localPosition = new Vector3(-300, 50, 0);
         }
         if (selectIndex == 2)
         {
             Debug.Log("SE");
             seSlider.value += 0.001f * inputMove.x;
+            corsol.transform.localPosition = new Vector3(-300, -50, 0);
         }
     }
 
