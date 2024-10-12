@@ -101,7 +101,7 @@ public class ResultScript : MonoBehaviour
             else
             {
                 //ƒV[ƒ“ˆÚ“®
-                SceneManager.LoadScene("ModeSelectScene");
+                //SceneManager.LoadScene("ModeSelectScene");
             }
         }
     }

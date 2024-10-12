@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Transactions;
-using TMPro.EditorUtilities;
+//using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using static UnityEngine.EventSystems.StandaloneInputModule;
+//using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
+//using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -45,8 +45,8 @@ public class PlayerScript : MonoBehaviour
    
 
     //弾の速さ
-    private float nomalBulletSpeed = 600f;
-    private float strongBulletSpeed = 400f;
+    private float nomalBulletSpeed = 1200f;
+    private float strongBulletSpeed = 800f;
 
     //体力 publicでよい
     public int myHp = 100;
@@ -81,13 +81,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject bulletBeam;
     [SerializeField] private GameObject beamCharge;
     private bool isShotBeam = false;
-    private float chargeValue = 0.2f;
+    private float chargeValue = 0.1f;
     public float beamGauge = 0;
     private bool isCharge = false;
     GameObject newBeam = null;  
     //ビームの全体フレーム
     private int beamFream = 120;
-    private int beamFreamCount = 0;
+    private float beamFreamCount = 0.0f;
     private bool isBeamCount = false;
 
     //InputSystem
@@ -206,7 +206,7 @@ public class PlayerScript : MonoBehaviour
            
             beamGauge = 0;
             beamFreamCount++;
-            if (beamFreamCount > 60)
+            if (beamFreamCount > 180.0f)
             {
                 beamCharge.SetActive(false);
                 maxEffect.SetActive(false);

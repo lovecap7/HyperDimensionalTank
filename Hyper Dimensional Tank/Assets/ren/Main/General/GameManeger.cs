@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.SceneTemplate;
+//using UnityEditor.SceneTemplate;
 using UnityEngine.SceneManagement;
 
 public class GameManeger : MonoBehaviour
