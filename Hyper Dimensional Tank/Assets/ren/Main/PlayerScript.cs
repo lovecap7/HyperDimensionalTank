@@ -45,8 +45,8 @@ public class PlayerScript : MonoBehaviour
    
 
     //’e‚Ì‘¬‚³
-    private float nomalBulletSpeed = 1200f;
-    private float strongBulletSpeed = 800f;
+    private float nomalBulletSpeed = 800f;
+    private float strongBulletSpeed = 400f;
 
     //‘Ì—Í public‚Å‚æ‚¢
     public int myHp = 100;
@@ -206,7 +206,7 @@ public class PlayerScript : MonoBehaviour
            
             beamGauge = 0;
             beamFreamCount++;
-            if (beamFreamCount > 180.0f)
+            if (beamFreamCount > 60.0f)
             {
                 beamCharge.SetActive(false);
                 maxEffect.SetActive(false);
@@ -313,22 +313,23 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void OnShotBeam(InputAction.CallbackContext context)
+    //public void OnShotBeam(InputAction.CallbackContext context)
+    //{
+        
+    //}
+
+    public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
+        if (startCount != null)
+        {
+            return;
+        }
         if (context.started && isShotBeam) // ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚Æ‚«
         {
             //‰¹(sound1)‚ð–Â‚ç‚·
             audioSource.PlayOneShot(seSound[1]);
             beamCharge.SetActive(true);
             isBeamCount = true;
-        }
-    }
-
-    public void OnCharge(InputAction.CallbackContext context)
-    {
-        if (startCount != null)
-        {
-            return;
         }
         if (context.performed)
         {

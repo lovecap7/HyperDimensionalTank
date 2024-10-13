@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.StandaloneInputModule;
 
@@ -78,19 +80,23 @@ public class AudioMixerScript : MonoBehaviour
         {
             Debug.Log("Master");
             masterSlider.value += 0.001f * inputMove.x;
-            corsol.transform.localPosition = new Vector3(-300,150,0);
+            corsol.transform.localPosition = new Vector3(-300,215,0);
         }
         if (selectIndex == 3)
         {
             Debug.Log("BGM");
             bgmSlider.value += 0.001f * inputMove.x;
-            corsol.transform.localPosition = new Vector3(-300, 50, 0);
+            corsol.transform.localPosition = new Vector3(-300, 75, 0);
         }
         if (selectIndex == 2)
         {
             Debug.Log("SE");
             seSlider.value += 0.001f * inputMove.x;
-            corsol.transform.localPosition = new Vector3(-300, -50, 0);
+            corsol.transform.localPosition = new Vector3(-300, -75, 0);
+        }
+        if(selectIndex == 1)
+        {
+            corsol.transform.localPosition = new Vector3(-177, -220, 0);
         }
     }
 
@@ -115,7 +121,15 @@ public class AudioMixerScript : MonoBehaviour
         if (context.started) // ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚Æ‚«
         {
             Debug.Log(inputMove);
-            selectIndex += (int)inputMove.y;
+            if(inputMove.y < -0.02f)
+            {
+                selectIndex -= 1;
+            }
+            else if (inputMove.y > 0.02f)
+            {
+                selectIndex += 1;
+            }
+           
         }
            
         if (selectIndex > 4)
@@ -126,5 +140,10 @@ public class AudioMixerScript : MonoBehaviour
         {
             selectIndex = 0;
         }
+    }
+
+    public void OnCancel(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }

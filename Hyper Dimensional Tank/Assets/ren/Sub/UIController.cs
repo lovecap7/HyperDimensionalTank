@@ -44,6 +44,15 @@ public partial class @UIController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""b89f2ada-0be3-4a34-8840-91db28aa9a98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,28 @@ public partial class @UIController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Decide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dae208dd-da5b-46f9-8bcb-27ea5ed7ddcb"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""284d5001-4c7b-49f0-965d-d6a2e10a1fcd"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -161,6 +192,7 @@ public partial class @UIController: IInputActionCollection2, IDisposable
         m_Result = asset.FindActionMap("Result", throwIfNotFound: true);
         m_Result_Select = m_Result.FindAction("Select", throwIfNotFound: true);
         m_Result_Decide = m_Result.FindAction("Decide", throwIfNotFound: true);
+        m_Result_Cancel = m_Result.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,12 +256,14 @@ public partial class @UIController: IInputActionCollection2, IDisposable
     private List<IResultActions> m_ResultActionsCallbackInterfaces = new List<IResultActions>();
     private readonly InputAction m_Result_Select;
     private readonly InputAction m_Result_Decide;
+    private readonly InputAction m_Result_Cancel;
     public struct ResultActions
     {
         private @UIController m_Wrapper;
         public ResultActions(@UIController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Select => m_Wrapper.m_Result_Select;
         public InputAction @Decide => m_Wrapper.m_Result_Decide;
+        public InputAction @Cancel => m_Wrapper.m_Result_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_Result; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -245,6 +279,9 @@ public partial class @UIController: IInputActionCollection2, IDisposable
             @Decide.started += instance.OnDecide;
             @Decide.performed += instance.OnDecide;
             @Decide.canceled += instance.OnDecide;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
         }
 
         private void UnregisterCallbacks(IResultActions instance)
@@ -255,6 +292,9 @@ public partial class @UIController: IInputActionCollection2, IDisposable
             @Decide.started -= instance.OnDecide;
             @Decide.performed -= instance.OnDecide;
             @Decide.canceled -= instance.OnDecide;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
         }
 
         public void RemoveCallbacks(IResultActions instance)
@@ -321,5 +361,6 @@ public partial class @UIController: IInputActionCollection2, IDisposable
     {
         void OnSelect(InputAction.CallbackContext context);
         void OnDecide(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

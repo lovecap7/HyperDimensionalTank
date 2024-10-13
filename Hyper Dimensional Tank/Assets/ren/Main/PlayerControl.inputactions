@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "BeamShot",
+                    "name": "Barrier",
                     "type": "Button",
                     "id": "b2ed74ae-b7e3-41e7-b651-6b320136d2b6",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Charge",
+                    "name": "ChargeAndBeam",
                     "type": "Button",
                     "id": "8d43b0cb-d666-4f9e-a8d5-535b73f8d299",
                     "expectedControlType": "Button",
@@ -390,7 +390,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "BeamShot",
+                    "action": "Barrier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -401,7 +401,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "BeamShot",
+                    "action": "Barrier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -412,7 +412,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Charge",
+                    "action": "ChargeAndBeam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -423,7 +423,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Charge",
+                    "action": "ChargeAndBeam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

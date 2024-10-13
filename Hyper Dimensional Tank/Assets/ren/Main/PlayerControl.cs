@@ -64,7 +64,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""BeamShot"",
+                    ""name"": ""Barrier"",
                     ""type"": ""Button"",
                     ""id"": ""b2ed74ae-b7e3-41e7-b651-6b320136d2b6"",
                     ""expectedControlType"": ""Button"",
@@ -109,7 +109,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Charge"",
+                    ""name"": ""ChargeAndBeam"",
                     ""type"": ""Button"",
                     ""id"": ""8d43b0cb-d666-4f9e-a8d5-535b73f8d299"",
                     ""expectedControlType"": ""Button"",
@@ -412,7 +412,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""BeamShot"",
+                    ""action"": ""Barrier"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -423,7 +423,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""BeamShot"",
+                    ""action"": ""Barrier"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -434,7 +434,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Charge"",
+                    ""action"": ""ChargeAndBeam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -445,7 +445,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Charge"",
+                    ""action"": ""ChargeAndBeam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1059,12 +1059,12 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_NomalShot = m_Player.FindAction("NomalShot", throwIfNotFound: true);
         m_Player_StrongShot = m_Player.FindAction("StrongShot", throwIfNotFound: true);
-        m_Player_BeamShot = m_Player.FindAction("BeamShot", throwIfNotFound: true);
+        m_Player_Barrier = m_Player.FindAction("Barrier", throwIfNotFound: true);
         m_Player_HeadRotationLeft = m_Player.FindAction("HeadRotationLeft", throwIfNotFound: true);
         m_Player_HeadRotationRight = m_Player.FindAction("HeadRotationRight", throwIfNotFound: true);
         m_Player_CameraMoveRight = m_Player.FindAction("CameraMoveRight", throwIfNotFound: true);
         m_Player_CameraMoveLeft = m_Player.FindAction("CameraMoveLeft", throwIfNotFound: true);
-        m_Player_Charge = m_Player.FindAction("Charge", throwIfNotFound: true);
+        m_Player_ChargeAndBeam = m_Player.FindAction("ChargeAndBeam", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1142,12 +1142,12 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_NomalShot;
     private readonly InputAction m_Player_StrongShot;
-    private readonly InputAction m_Player_BeamShot;
+    private readonly InputAction m_Player_Barrier;
     private readonly InputAction m_Player_HeadRotationLeft;
     private readonly InputAction m_Player_HeadRotationRight;
     private readonly InputAction m_Player_CameraMoveRight;
     private readonly InputAction m_Player_CameraMoveLeft;
-    private readonly InputAction m_Player_Charge;
+    private readonly InputAction m_Player_ChargeAndBeam;
     public struct PlayerActions
     {
         private @PlayerControl m_Wrapper;
@@ -1156,12 +1156,12 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @NomalShot => m_Wrapper.m_Player_NomalShot;
         public InputAction @StrongShot => m_Wrapper.m_Player_StrongShot;
-        public InputAction @BeamShot => m_Wrapper.m_Player_BeamShot;
+        public InputAction @Barrier => m_Wrapper.m_Player_Barrier;
         public InputAction @HeadRotationLeft => m_Wrapper.m_Player_HeadRotationLeft;
         public InputAction @HeadRotationRight => m_Wrapper.m_Player_HeadRotationRight;
         public InputAction @CameraMoveRight => m_Wrapper.m_Player_CameraMoveRight;
         public InputAction @CameraMoveLeft => m_Wrapper.m_Player_CameraMoveLeft;
-        public InputAction @Charge => m_Wrapper.m_Player_Charge;
+        public InputAction @ChargeAndBeam => m_Wrapper.m_Player_ChargeAndBeam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1183,9 +1183,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @StrongShot.started += instance.OnStrongShot;
             @StrongShot.performed += instance.OnStrongShot;
             @StrongShot.canceled += instance.OnStrongShot;
-            @BeamShot.started += instance.OnBeamShot;
-            @BeamShot.performed += instance.OnBeamShot;
-            @BeamShot.canceled += instance.OnBeamShot;
+            @Barrier.started += instance.OnBarrier;
+            @Barrier.performed += instance.OnBarrier;
+            @Barrier.canceled += instance.OnBarrier;
             @HeadRotationLeft.started += instance.OnHeadRotationLeft;
             @HeadRotationLeft.performed += instance.OnHeadRotationLeft;
             @HeadRotationLeft.canceled += instance.OnHeadRotationLeft;
@@ -1198,9 +1198,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @CameraMoveLeft.started += instance.OnCameraMoveLeft;
             @CameraMoveLeft.performed += instance.OnCameraMoveLeft;
             @CameraMoveLeft.canceled += instance.OnCameraMoveLeft;
-            @Charge.started += instance.OnCharge;
-            @Charge.performed += instance.OnCharge;
-            @Charge.canceled += instance.OnCharge;
+            @ChargeAndBeam.started += instance.OnChargeAndBeam;
+            @ChargeAndBeam.performed += instance.OnChargeAndBeam;
+            @ChargeAndBeam.canceled += instance.OnChargeAndBeam;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1217,9 +1217,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @StrongShot.started -= instance.OnStrongShot;
             @StrongShot.performed -= instance.OnStrongShot;
             @StrongShot.canceled -= instance.OnStrongShot;
-            @BeamShot.started -= instance.OnBeamShot;
-            @BeamShot.performed -= instance.OnBeamShot;
-            @BeamShot.canceled -= instance.OnBeamShot;
+            @Barrier.started -= instance.OnBarrier;
+            @Barrier.performed -= instance.OnBarrier;
+            @Barrier.canceled -= instance.OnBarrier;
             @HeadRotationLeft.started -= instance.OnHeadRotationLeft;
             @HeadRotationLeft.performed -= instance.OnHeadRotationLeft;
             @HeadRotationLeft.canceled -= instance.OnHeadRotationLeft;
@@ -1232,9 +1232,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @CameraMoveLeft.started -= instance.OnCameraMoveLeft;
             @CameraMoveLeft.performed -= instance.OnCameraMoveLeft;
             @CameraMoveLeft.canceled -= instance.OnCameraMoveLeft;
-            @Charge.started -= instance.OnCharge;
-            @Charge.performed -= instance.OnCharge;
-            @Charge.canceled -= instance.OnCharge;
+            @ChargeAndBeam.started -= instance.OnChargeAndBeam;
+            @ChargeAndBeam.performed -= instance.OnChargeAndBeam;
+            @ChargeAndBeam.canceled -= instance.OnChargeAndBeam;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1421,12 +1421,12 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnNomalShot(InputAction.CallbackContext context);
         void OnStrongShot(InputAction.CallbackContext context);
-        void OnBeamShot(InputAction.CallbackContext context);
+        void OnBarrier(InputAction.CallbackContext context);
         void OnHeadRotationLeft(InputAction.CallbackContext context);
         void OnHeadRotationRight(InputAction.CallbackContext context);
         void OnCameraMoveRight(InputAction.CallbackContext context);
         void OnCameraMoveLeft(InputAction.CallbackContext context);
-        void OnCharge(InputAction.CallbackContext context);
+        void OnChargeAndBeam(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
