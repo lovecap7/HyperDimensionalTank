@@ -27,7 +27,7 @@ public class SingleplayWall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")   // 弾に当たったらブロックのHPを減らして壊れたらスコアを追加
         {
             count++;
             if (count >= HP)
