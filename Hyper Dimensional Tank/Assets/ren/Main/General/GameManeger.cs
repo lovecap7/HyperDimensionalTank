@@ -168,8 +168,8 @@ public class GameManeger : MonoBehaviour
     private void FixedUpdate()
     {
         //HP‚Ì•Ï‰»‚ğ•`‰æ
-        hpBar1P.value = (float)(playerScript1P.myHp) / 100.0f;
-        hpBar2P.value = (float)(playerScript2P.myHp) / 100.0f;
+        hpBar1P.value = playerScript1P.myHp / 100.0f;
+        hpBar2P.value = playerScript2P.myHp / 100.0f;
         //ƒr[ƒ€‚Ì•`‰æ
         beamBar1P.value = (float)(playerScript1P.beamGauge) / 100.0f;
         beamBar2P.value = (float)(playerScript2P.beamGauge) / 100.0f;

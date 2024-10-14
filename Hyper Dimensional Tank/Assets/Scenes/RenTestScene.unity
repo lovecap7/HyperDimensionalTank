@@ -622,6 +622,22 @@ PrefabInstance:
       propertyPath: seSound.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 09736ba431f10ce459fd017f40a49332, type: 3}
+    - target: {fileID: 7149243515070506594, guid: bc103409e9d8b434cbba9ac22ace1258, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: bc103409e9d8b434cbba9ac22ace1258, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 91a1b89a-73f8-41e0-8419-b320273ea477
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: bc103409e9d8b434cbba9ac22ace1258, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Player/CameraMoveLeft[/SwitchProControllerHID/leftShoulder,/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: bc103409e9d8b434cbba9ac22ace1258, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnChargeAndBeam
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -816,6 +832,22 @@ PrefabInstance:
       propertyPath: seSound.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 09736ba431f10ce459fd017f40a49332, type: 3}
+    - target: {fileID: 7149243515070506594, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 91a1b89a-73f8-41e0-8419-b320273ea477
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Player/CameraMoveLeft[/SwitchProControllerHID/leftShoulder,/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149243515070506594, guid: ff9ebd2c759a3f845a0d2e5b3c31ea04, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnChargeAndBeam
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

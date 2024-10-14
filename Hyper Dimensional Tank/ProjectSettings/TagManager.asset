@@ -10,6 +10,7 @@ TagManager:
   - Beam
   - StrongBullet
   - Fade
+  - Barrier
   layers:
   - Default
   - TransparentFX
