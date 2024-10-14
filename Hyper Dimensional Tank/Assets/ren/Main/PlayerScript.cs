@@ -13,14 +13,14 @@ using UnityEngine.Windows;
 
 public class PlayerScript : MonoBehaviour
 {
-    public string playerIndex;
+    [SerializeField] private string playerIndex;
 
     //スタートするまで動けない
     private StartCount startCount;
     [SerializeField] private GameObject startCountObj;
 
     //プレイヤーの動き
-    private float moveSpeed = 20f;
+    private float moveSpeed = 12f;
     private float tempSpeed = 0f;
     //private Vector3 moveVec;
     private Vector2 inputMove;
@@ -48,8 +48,13 @@ public class PlayerScript : MonoBehaviour
     private float nomalBulletSpeed = 800f;
     private float strongBulletSpeed = 400f;
 
+    //ダメージ
+    private int damegeNomal = 20;
+    private int damegeStrong = 40;
+    private int damegeBeam = 2;
+
     //体力 publicでよい
-    public int myHp = 100;
+    public float myHp = 100;
     public bool isDead = false;
     public int playerStock = 2;
 
@@ -90,6 +95,12 @@ public class PlayerScript : MonoBehaviour
     private float beamFreamCount = 0.0f;
     private bool isBeamCount = false;
 
+    //バリア
+    [SerializeField] private GameObject barrier;
+    private bool isBarrier = false;
+    private float cutRate = 0.5f;
+    private float burrierFreme = 200.0f;
+    private float burrierCoolTime = 1500.0f;
     //InputSystem
     private PlayerControl playerControl;
 
@@ -101,18 +112,27 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //最初の三秒間は動けない
         startCount = startCountObj.GetComponent<StartCount>();
+        //エフェクトを非表示
         beamCharge.SetActive(false);
         chargeEffect.SetActive(false);
         maxEffect.SetActive(false);
+        //バリアのクールタイムを0秒に
+        burrierCoolTime = 0.0f;
+        barrier.SetActive(false);
+        //AddForceを使うために取得
         playerRb = this.transform.GetComponent<Rigidbody>();
-        //moveVec = new Vector3(0,0,moveSpeed);
+        //頭を動かせるようにする
         head = transform.GetChild(0);
+        //コントローラーで動かせるようにする
         playerControl = new PlayerControl();
         playerControl.Enable();
+        //弾を打った時にスピードを0にするため一時的にmoveSpeedをtempにいれる
         tempSpeed = moveSpeed;
         //Componentを取得
         audioSource = GetComponent<AudioSource>();
+       
     }
     public void HeadRotationLeft(InputAction.CallbackContext context)
     {
@@ -239,6 +259,31 @@ public class PlayerScript : MonoBehaviour
         {
             moveSpeed = tempSpeed;
         }
+        //バリアのフレーム
+        Debug.Log(burrierCoolTime);
+        if (isBarrier)
+        {
+            burrierFreme--;
+            if (burrierFreme < 0)
+            {
+                burrierCoolTime = 1500.0f;
+                burrierFreme = 200.0f;
+                isBarrier = false;
+                barrier.SetActive(false);
+            }
+        }
+        else
+        {
+            if (burrierCoolTime <= 0.0f)
+            {
+                burrierCoolTime = 0;
+            }
+            else
+            {
+                burrierCoolTime--;
+            }
+        }
+
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
         if (isCharge)
@@ -313,10 +358,19 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //public void OnShotBeam(InputAction.CallbackContext context)
-    //{
-        
-    //}
+    public void OnShotBarrier(InputAction.CallbackContext context)
+    {
+        if (startCount != null)
+        {
+            return;
+        }
+        if (context.performed && burrierCoolTime <= 0.0f)
+        {
+            //押した瞬間の処理
+            barrier.SetActive(true);
+            isBarrier = true;
+        }
+    }
 
     public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
@@ -368,14 +422,18 @@ public class PlayerScript : MonoBehaviour
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
         if (layerName != playerIndex)
         {
-          
+            float tempCut = 1.0f;
+            if (isBarrier)
+            {
+                tempCut = 0.0f;
+            }
             if (other.gameObject.tag == "Bullet")
             {
-                myHp -= 5;
+                myHp -= damegeNomal * tempCut;
             }
             if (other.gameObject.tag == "StrongBullet")
             {
-                myHp -= 30;
+                myHp -= damegeStrong * tempCut;
             }
 
         }
@@ -390,9 +448,15 @@ public class PlayerScript : MonoBehaviour
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
         if (layerName != playerIndex)
         {
+
+            float tempCut = 1.0f;
+            if (isBarrier)
+            {
+                tempCut = cutRate;
+            }
             if (other.gameObject.tag == "Beam")
             {
-                myHp -= 2;
+                myHp -= damegeBeam * tempCut;
             }
         }
     }
