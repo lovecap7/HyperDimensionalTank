@@ -23,6 +23,13 @@ public class GameManeger : MonoBehaviour
     //残機
     [SerializeField] private GameObject[] stockUi1P;
     [SerializeField] private GameObject[] stockUi2P;
+
+    //バリア
+    [SerializeField] private GameObject burrierUiObj1P;
+    [SerializeField] private GameObject burrierUiObj2P;
+    private TextMeshProUGUI burrierText1P;
+    private TextMeshProUGUI burrierText2P;
+
     //リスぽ
     private int respawnTime1P = 180;
     private int respawnTime2P = 180;
@@ -74,10 +81,12 @@ public class GameManeger : MonoBehaviour
         respownTimerText1P = respownTimerObj1P.GetComponent<TextMeshProUGUI>();
         respownTimerText2P = respownTimerObj2P.GetComponent<TextMeshProUGUI>();
 
+        burrierText1P = burrierUiObj1P.GetComponent<TextMeshProUGUI>();
+        burrierText2P = burrierUiObj2P.GetComponent<TextMeshProUGUI>();
+
         //勝敗
         //gamesetPanel1P = GameObject.Find("Canvas/Canvas1P/GamesetPanel");
         //gamesetPanel2P = GameObject.Find("Canvas/Canvas2P/GamesetPanel");
-     
 
         respownPanel1P.SetActive(false);
         respownPanel2P.SetActive(false);
@@ -163,6 +172,24 @@ public class GameManeger : MonoBehaviour
             }
         }
 
+
+        if (playerScript1P.burrierCoolTime <= 0)
+        {
+            burrierText1P.text = "バリア:使用可能";
+        }
+        else
+        {
+            burrierText1P.text = "バリア:" + (playerScript1P.burrierCoolTime / 60).ToString("f1") + "s";
+        }
+
+        if (playerScript2P.burrierCoolTime <= 0)
+        {
+            burrierText2P.text = "バリア:使用可能";
+        }
+        else
+        {
+            burrierText2P.text = "バリア:" + (playerScript2P.burrierCoolTime / 60).ToString("f1") + "s";
+        }
     }
 
     private void FixedUpdate()
@@ -173,5 +200,7 @@ public class GameManeger : MonoBehaviour
         //ビームの描画
         beamBar1P.value = (float)(playerScript1P.beamGauge) / 100.0f;
         beamBar2P.value = (float)(playerScript2P.beamGauge) / 100.0f;
+
+       
     }
 }

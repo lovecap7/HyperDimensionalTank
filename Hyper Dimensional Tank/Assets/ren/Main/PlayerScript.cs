@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
     private bool isBarrier = false;
     private float cutRate = 0.5f;
     private float burrierFreme = 200.0f;
-    private float burrierCoolTime = 1500.0f;
+    public float burrierCoolTime = 1800.0f;
     //InputSystem
     private PlayerControl playerControl;
 
@@ -266,22 +266,18 @@ public class PlayerScript : MonoBehaviour
             burrierFreme--;
             if (burrierFreme < 0)
             {
-                burrierCoolTime = 1500.0f;
                 burrierFreme = 200.0f;
                 isBarrier = false;
                 barrier.SetActive(false);
             }
         }
+        if (burrierCoolTime <= 0.0f)
+        {
+            burrierCoolTime = 0;
+        }
         else
         {
-            if (burrierCoolTime <= 0.0f)
-            {
-                burrierCoolTime = 0;
-            }
-            else
-            {
-                burrierCoolTime--;
-            }
+            burrierCoolTime--;
         }
 
         //ƒ`ƒƒ[ƒW’†‚Í‹…‚ð‘Å‚Ä‚È‚­‚µ‚½‚¢
@@ -368,6 +364,7 @@ public class PlayerScript : MonoBehaviour
         {
             //‰Ÿ‚µ‚½uŠÔ‚Ìˆ—
             barrier.SetActive(true);
+            burrierCoolTime = 1800.0f;
             isBarrier = true;
         }
     }
