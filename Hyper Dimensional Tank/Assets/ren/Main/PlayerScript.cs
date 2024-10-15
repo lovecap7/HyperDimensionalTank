@@ -259,7 +259,17 @@ public class PlayerScript : MonoBehaviour
         {
             moveSpeed = tempSpeed;
         }
+
+
         //バリアのフレーム
+        if (burrierCoolTime <= 0.0f)
+        {
+            burrierCoolTime = 0;
+        }
+        else
+        {
+            burrierCoolTime--;
+        }
         Debug.Log(burrierCoolTime);
         if (isBarrier)
         {
@@ -270,16 +280,9 @@ public class PlayerScript : MonoBehaviour
                 isBarrier = false;
                 barrier.SetActive(false);
             }
+            isShotNomal = false;
+            isShotStrong = false;
         }
-        if (burrierCoolTime <= 0.0f)
-        {
-            burrierCoolTime = 0;
-        }
-        else
-        {
-            burrierCoolTime--;
-        }
-
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
         if (isCharge)
@@ -302,11 +305,15 @@ public class PlayerScript : MonoBehaviour
             isShotStrong = false;
             return;
         }
-       
+
+
+
         //プレイヤーの移動
         playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
         //Quaternion.AngleAxis(度数法, 軸);
         this.transform.rotation *= Quaternion.AngleAxis(inputMove.x * bodyRotateSpeed * Time.deltaTime, Vector3.up);
+
+     
     }
  
     public void OnShotNomal(InputAction.CallbackContext context)
@@ -371,7 +378,8 @@ public class PlayerScript : MonoBehaviour
 
     public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
-        if (startCount != null)
+        
+        if (startCount != null || isBarrier)
         {
             return;
         }
