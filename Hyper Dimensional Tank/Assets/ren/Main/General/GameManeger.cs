@@ -19,21 +19,21 @@ public class GameManeger : MonoBehaviour
     //beamUI
     [SerializeField] private Slider beamBar1P;
     [SerializeField] private Slider beamBar2P;
-
+    //ビームがたまっているかどうかをテキストで表示
+    [SerializeField] private GameObject beamTextObj1P;
+    [SerializeField] private GameObject beamTextObj2P;
+    private TextMeshProUGUI beamText1P;
+    private TextMeshProUGUI beamText2P;
     //残機
     [SerializeField] private GameObject[] stockUi1P;
     [SerializeField] private GameObject[] stockUi2P;
 
-    //バリア
-    //[SerializeField] private GameObject burrierUiObj1P;
-    //[SerializeField] private GameObject burrierUiObj2P;
-    //private TextMeshProUGUI burrierText1P;
-    //private TextMeshProUGUI burrierText2P;
-
-    //beamUI
+    //burrierUI
     [SerializeField] private Slider burrierBar1P;
     [SerializeField] private Slider burrierBar2P;
+  
 
+    //Xボタンの表示
     [SerializeField] private GameObject xBottun1P;
     [SerializeField] private GameObject xBottun2P;
 
@@ -48,11 +48,6 @@ public class GameManeger : MonoBehaviour
     private TextMeshProUGUI respownTimerText1P;
     private TextMeshProUGUI respownTimerText2P;
 
-    //終了
-    //private GameObject gamesetPanel1P;
-    //private GameObject gamesetPanel2P;
-    //[SerializeField] private TextMeshProUGUI gamesetText1P;
-    //[SerializeField] private TextMeshProUGUI gamesetText2P;
 
 
     //リス地
@@ -79,6 +74,8 @@ public class GameManeger : MonoBehaviour
         //ビームのゲージを0に
         beamBar1P.value = 0;
         beamBar2P.value = 0;
+        beamText1P = beamTextObj1P.GetComponent<TextMeshProUGUI>();
+        beamText2P = beamTextObj2P.GetComponent<TextMeshProUGUI>();
         //バリアをMAXに
         burrierBar1P.value = 1;
         burrierBar2P.value = 1;
@@ -94,17 +91,10 @@ public class GameManeger : MonoBehaviour
         respownTimerText1P = respownTimerObj1P.GetComponent<TextMeshProUGUI>();
         respownTimerText2P = respownTimerObj2P.GetComponent<TextMeshProUGUI>();
 
-        //burrierText1P = burrierUiObj1P.GetComponent<TextMeshProUGUI>();
-        //burrierText2P = burrierUiObj2P.GetComponent<TextMeshProUGUI>();
-
-        //勝敗
-        //gamesetPanel1P = GameObject.Find("Canvas/Canvas1P/GamesetPanel");
-        //gamesetPanel2P = GameObject.Find("Canvas/Canvas2P/GamesetPanel");
-
+       
         respownPanel1P.SetActive(false);
         respownPanel2P.SetActive(false);
-        //gamesetPanel1P.SetActive(false);
-        //gamesetPanel2P.SetActive(false);
+      
     }
 
     // Update is called once per frame
@@ -184,25 +174,6 @@ public class GameManeger : MonoBehaviour
                 playerObj2P.transform.position = respornPoint2.transform.position;
             }
         }
-
-
-        //if (playerScript1P.burrierCoolTime <= 0)
-        //{
-        //    burrierText1P.text = "バリア:使用可能";
-        //}
-        //else
-        //{
-        //    burrierText1P.text = "バリア:" + (playerScript1P.burrierCoolTime / 60).ToString("f1") + "s";
-        //}
-
-        //if (playerScript2P.burrierCoolTime <= 0)
-        //{
-        //    burrierText2P.text = "バリア:使用可能";
-        //}
-        //else
-        //{
-        //    burrierText2P.text = "バリア:" + (playerScript2P.burrierCoolTime / 60).ToString("f1") + "s";
-        //}
     }
 
     private void FixedUpdate()
@@ -213,6 +184,23 @@ public class GameManeger : MonoBehaviour
         //ビームの描画
         beamBar1P.value = (float)(playerScript1P.beamGauge) / 100.0f;
         beamBar2P.value = (float)(playerScript2P.beamGauge) / 100.0f;
+        if (beamBar1P.value < 1.0f)
+        {
+            beamText1P.text = "チャージ可能";
+        }
+        else
+        {
+            beamText1P.text = "ビーム発射可能";
+        }
+        if (beamBar2P.value < 1.0f)
+        {
+            beamText2P.text = "チャージ可能";
+        }
+        else
+        {
+            beamText2P.text = "ビーム発射可能";
+        }
+
 
         burrierBar1P.value = 1.0f - (float)(playerScript1P.burrierCoolTime) / 1800.0f;
         burrierBar2P.value = 1.0f - (float)(playerScript2P.burrierCoolTime) / 1800.0f;
