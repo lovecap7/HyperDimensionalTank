@@ -49,8 +49,8 @@ public class PlayerScript : MonoBehaviour
     private float strongBulletSpeed = 400f;
 
     //ƒ_ƒ[ƒW
-    private int damegeNomal = 20;
-    private int damegeStrong = 40;
+    private int damegeNomal = 10;
+    private int damegeStrong = 30;
     private int damegeBeam = 2;
 
     //‘Ì—Í public‚Å‚æ‚¢

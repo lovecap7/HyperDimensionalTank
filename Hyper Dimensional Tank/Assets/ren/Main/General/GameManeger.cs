@@ -30,8 +30,16 @@ public class GameManeger : MonoBehaviour
     private TextMeshProUGUI burrierText1P;
     private TextMeshProUGUI burrierText2P;
 
-    //リスぽ
-    private int respawnTime1P = 180;
+    //beamUI
+    [SerializeField] private Slider burrierBar1P;
+    [SerializeField] private Slider burrierBar2P;
+
+    [SerializeField] private GameObject xBottun1P;
+    [SerializeField] private GameObject xBottun2P;
+
+
+   //リスぽ
+   private int respawnTime1P = 180;
     private int respawnTime2P = 180;
     private GameObject respownPanel1P;
     private GameObject respownPanel2P;
@@ -71,9 +79,14 @@ public class GameManeger : MonoBehaviour
         //ビームのゲージを0に
         beamBar1P.value = 0;
         beamBar2P.value = 0;
+        //バリアをMAXに
+        burrierBar1P.value = 1;
+        burrierBar2P.value = 1;
+        xBottun1P.SetActive(false);
+        xBottun2P.SetActive(false);
 
-        //リスポーンタイマー
-        respownPanel1P = GameObject.Find("Canvas/Canvas1P/RespownPanel");
+       //リスポーンタイマー
+       respownPanel1P = GameObject.Find("Canvas/Canvas1P/RespownPanel");
         respownPanel2P = GameObject.Find("Canvas/Canvas2P/RespownPanel");
        
         respownTimerObj1P = GameObject.Find("Canvas/Canvas1P/RespownPanel/RespownTimer");
@@ -201,6 +214,24 @@ public class GameManeger : MonoBehaviour
         beamBar1P.value = (float)(playerScript1P.beamGauge) / 100.0f;
         beamBar2P.value = (float)(playerScript2P.beamGauge) / 100.0f;
 
-       
+        burrierBar1P.value = 1.0f - (float)(playerScript1P.burrierCoolTime) / 1800.0f;
+        burrierBar2P.value = 1.0f - (float)(playerScript2P.burrierCoolTime) / 1800.0f;
+        if (burrierBar1P.value >= 1.0f)
+        {
+            xBottun1P.SetActive(true);
+        }
+        else
+        {
+            xBottun1P.SetActive(false);
+        }
+
+        if (burrierBar2P.value >= 1.0f)
+        {
+            xBottun2P.SetActive(true);
+        }
+        else
+        {
+            xBottun2P.SetActive(false);
+        }
     }
 }
