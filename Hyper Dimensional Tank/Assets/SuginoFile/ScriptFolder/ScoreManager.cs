@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 {
     private int totalScore = 0;
 
-    TextMeshProUGUI scoreText = null;
+    [SerializeField]TextMeshProUGUI scoreText = null;
 
     // Start is called before the first frame update
     void Start()
