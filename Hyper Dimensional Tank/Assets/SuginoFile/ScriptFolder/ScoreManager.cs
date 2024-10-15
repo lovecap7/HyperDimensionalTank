@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     private int totalScore = 0;
+    [SerializeField] GameObject score;
 
     TextMeshProUGUI scoreText = null;
 
@@ -19,7 +20,7 @@ public class ScoreManager : MonoBehaviour
         //// テキストの表示を入れ替える
         //scoreText.text = "Score00000" + score;
         // オブジェクトからTextコンポーネントを取得
-         scoreText = GetComponent<TextMeshProUGUI>();
+         scoreText = score.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame

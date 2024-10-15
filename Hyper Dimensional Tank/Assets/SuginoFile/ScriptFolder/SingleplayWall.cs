@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SingleplayWall : MonoBehaviour
 {
-    private static int count = 0;
+    private static int damage = 0;
     [SerializeField]
     private int HP;
 
@@ -29,8 +29,8 @@ public class SingleplayWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")   // 弾に当たったらブロックのHPを減らして壊れたらスコアを追加
         {
-            count++;
-            if (count >= HP)
+            damage++;
+            if (damage >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -40,8 +40,8 @@ public class SingleplayWall : MonoBehaviour
         }
         if (other.gameObject.tag == "StrongBullet")
         {
-            count += 2;
-            if (count >= HP)
+            damage += 2;
+            if (damage >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -54,8 +54,8 @@ public class SingleplayWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Beam")
         {
-            count++;
-            if (count >= HP)
+            damage++;
+            if (damage >= HP)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
