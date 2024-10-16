@@ -220,8 +220,31 @@ public class PlayerScript : MonoBehaviour
             //Quaternion.AngleAxis(度数法, 軸);
             head.rotation *= Quaternion.AngleAxis(headRotateSpeed * Time.deltaTime, Vector3.up);
         }
+
+        //バリアのフレーム
+        if (burrierCoolTime <= 0.0f)
+        {
+            burrierCoolTime = 0;
+        }
+        else
+        {
+            burrierCoolTime--;
+        }
+        
+        if (isBarrier)
+        {
+            burrierFreme--;
+            if (burrierFreme < 0)
+            {
+                burrierFreme = 200.0f;
+                isBarrier = false;
+                barrier.SetActive(false);
+            }
+            isShotNomal = false;
+            isShotStrong = false;
+        }
         //ビーム発射フレームカウント開始
-        if (isBeamCount)
+        if (isBeamCount && !isBarrier)
         {
            
             beamGauge = 0;
@@ -261,28 +284,7 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        //バリアのフレーム
-        if (burrierCoolTime <= 0.0f)
-        {
-            burrierCoolTime = 0;
-        }
-        else
-        {
-            burrierCoolTime--;
-        }
-        Debug.Log(burrierCoolTime);
-        if (isBarrier)
-        {
-            burrierFreme--;
-            if (burrierFreme < 0)
-            {
-                burrierFreme = 200.0f;
-                isBarrier = false;
-                barrier.SetActive(false);
-            }
-            isShotNomal = false;
-            isShotStrong = false;
-        }
+      
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
         if (isCharge)
@@ -318,7 +320,7 @@ public class PlayerScript : MonoBehaviour
  
     public void OnShotNomal(InputAction.CallbackContext context)
     {
-        if (startCount != null)
+        if (startCount != null || isBarrier)
         {
             return;
         }
@@ -340,7 +342,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnShotStrong(InputAction.CallbackContext context)
     {
-        if (startCount != null)
+        if (startCount != null || isBarrier)
         {
             return;
         }
@@ -367,7 +369,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (context.performed && burrierCoolTime <= 0.0f)
+        if (context.performed && burrierCoolTime <= 0.0f && !isBeamCount)
         {
             //押した瞬間の処理
             barrier.SetActive(true);
@@ -379,7 +381,7 @@ public class PlayerScript : MonoBehaviour
     public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
         
-        if (startCount != null || isBarrier)
+        if (startCount != null && !isBarrier)
         {
             return;
         }
