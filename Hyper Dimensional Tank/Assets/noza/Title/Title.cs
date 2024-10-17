@@ -36,13 +36,13 @@ public class Title : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             cursorNum = 1;
-            cursor.transform.localPosition = new Vector3(-200,-107,0);
+            cursor.transform.localPosition = new Vector3(-200,-161,0);
         }
         // SÉLÅ[ÇâüÇµÇΩÇÁcursorNumÇ…2ë„ì¸
         if (Input.GetKeyDown(KeyCode.S))
         {
             cursorNum = 2;
-            cursor.transform.localPosition = new Vector3(-200, -218, 0);
+            cursor.transform.localPosition = new Vector3(-200, -253, 0);
 
         }
         if (cursorNum == 1)
