@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &8638920 stripped
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &76719406 stripped
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &82626966 stripped
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &106723088 stripped
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &117183590 stripped
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &119396947
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &339854201
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &373455338 stripped
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &396541390
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &479438935
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &534366241 stripped
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &547954059
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &644962550 stripped
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &663029614
@@ -2030,7 +2030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &738477834 stripped
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &744182881
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &753643296
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &773200840
@@ -2560,7 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &842362974
@@ -2906,7 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &916509000 stripped
@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &919935195
@@ -3062,7 +3062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &981946067 stripped
@@ -3082,7 +3082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &984002508
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1102270476 stripped
@@ -3744,7 +3744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b02765c99b591540bc3c2d8aaaad6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 10
+  timeLimit: 30
   timerText: {fileID: 705313197}
 --- !u!4 &1156396605
 Transform:
@@ -3982,7 +3982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1202917735 stripped
@@ -4002,7 +4002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1207564640
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1267648308 stripped
@@ -4351,7 +4351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1287503403
@@ -4632,7 +4632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1349773295
@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1366226826 stripped
@@ -4740,7 +4740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1376393401
@@ -4848,7 +4848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1386093863 stripped
@@ -5122,7 +5122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1478015543
@@ -5237,7 +5237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1493038327
@@ -5639,7 +5639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1599919802 stripped
@@ -5659,7 +5659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1605323200 stripped
@@ -5679,7 +5679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1617247264 stripped
@@ -5699,7 +5699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1652012448 stripped
@@ -5719,7 +5719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1662087363
@@ -6077,7 +6077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1692809213
@@ -6165,7 +6165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1703034230 stripped
@@ -6185,7 +6185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1720516346
@@ -6723,7 +6723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1830806637 stripped
@@ -6743,7 +6743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1851805763
@@ -6967,7 +6967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1887370076 stripped
@@ -6987,7 +6987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1901122452
@@ -7075,7 +7075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1924480556
@@ -7484,7 +7484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &1956535167 stripped
@@ -7504,7 +7504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1957830630
@@ -7695,7 +7695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &1973893400
@@ -7851,7 +7851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2020316046 stripped
@@ -7871,7 +7871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2027168557 stripped
@@ -7891,7 +7891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2027449273
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2051583086 stripped
@@ -8044,7 +8044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2057539375 stripped
@@ -8064,7 +8064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &2058483249
@@ -8328,7 +8328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &2090338990
@@ -8504,7 +8504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &2115163641
@@ -8705,7 +8705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1 &2140351113 stripped
@@ -8725,7 +8725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!1001 &2144979740

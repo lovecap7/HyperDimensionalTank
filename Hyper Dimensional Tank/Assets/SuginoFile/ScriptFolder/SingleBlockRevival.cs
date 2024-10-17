@@ -50,10 +50,23 @@ public class SingleBlockRevival : MonoBehaviour
                 RandPosz = Random.Range(RangeStart, RangeEnd);
                 SpawnPos = new Vector3(RandPosx, 1, RandPosz);
             } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+            Instantiate(MinBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+            do
+            {
+                RandPosx = Random.Range(RangeStart, RangeEnd);
+                RandPosz = Random.Range(RangeStart, RangeEnd);
+                SpawnPos = new Vector3(RandPosx, 1, RandPosz);
+            } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+            Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+            do
+            {
+                RandPosx = Random.Range(RangeStart, RangeEnd);
+                RandPosz = Random.Range(RangeStart, RangeEnd);
+                SpawnPos = new Vector3(RandPosx, 1, RandPosz);
+            } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
 
             // ƒuƒƒbƒN‚Ì¶¬
-
-            Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+            Instantiate(StrongBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
         }
     }
    
