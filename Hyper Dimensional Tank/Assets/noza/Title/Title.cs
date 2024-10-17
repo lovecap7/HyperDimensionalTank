@@ -16,7 +16,7 @@ public class Title : MonoBehaviour
     private TextMeshProUGUI optionText; 
     GameObject gameStartTextObj;
     GameObject optionTextObj;
-    GameObject fadePanel;
+   // GameObject fadePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class Title : MonoBehaviour
         cursor = GameObject.Find("Canvas/Cursor").gameObject;
         gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
         optionText = optionTextObj.GetComponent<TextMeshProUGUI>();
-        fadePanel = GameObject.Find("Canvas/Panel").gameObject;
+        // fadePanel = GameObject.Find("Canvas/Panel").gameObject;
     }
 
     // Update is called once per frame
@@ -36,13 +36,13 @@ public class Title : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             cursorNum = 1;
-            cursor.transform.localPosition = new Vector3(-110,-50,0);
+            cursor.transform.localPosition = new Vector3(-200,-107,0);
         }
         // SÉLÅ[ÇâüÇµÇΩÇÁcursorNumÇ…2ë„ì¸
         if (Input.GetKeyDown(KeyCode.S))
         {
             cursorNum = 2;
-            cursor.transform.localPosition = new Vector3(-110, -110, 0);
+            cursor.transform.localPosition = new Vector3(-200, -218, 0);
 
         }
         if (cursorNum == 1)
