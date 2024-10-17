@@ -29,8 +29,8 @@ public class SingleplayWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")   // 弾に当たったらブロックのHPを減らして壊れたらスコアを追加
         {
-            count++;
-            if (count >= HP)
+            HP--;
+            if(HP <= 0)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -40,8 +40,8 @@ public class SingleplayWall : MonoBehaviour
         }
         if (other.gameObject.tag == "StrongBullet")
         {
-            count += 2;
-            if (count >= HP)
+            HP -= 2;
+            if(HP <= 0)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
