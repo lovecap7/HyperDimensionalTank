@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FadeManager : MonoBehaviour
 {
     public bool isFadeIn = false;
-    private float fadeSpeed = 0.001f;
+    private float fadeSpeed =0.001f;
     float alfa; //“§–¾“x
     float red, green, blue;//RGB
     string sceneName;

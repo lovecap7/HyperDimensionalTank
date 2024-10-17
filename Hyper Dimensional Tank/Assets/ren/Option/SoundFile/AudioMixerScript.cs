@@ -144,6 +144,6 @@ public class AudioMixerScript : MonoBehaviour
 
     public void OnCancel(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("ModeSelectScene");
     }
 }
