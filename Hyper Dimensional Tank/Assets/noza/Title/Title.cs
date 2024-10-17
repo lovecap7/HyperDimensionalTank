@@ -16,7 +16,13 @@ public class Title : MonoBehaviour
     private TextMeshProUGUI optionText; 
     GameObject gameStartTextObj;
     GameObject optionTextObj;
-   // GameObject fadePanel;
+    // GameObject fadePanel;
+
+    //フェードインアウトをするためにこれらがいる
+    [SerializeField] GameObject fadeManaObj;
+     FadeManager fadeManager;
+    //次に行くシーンの名前を保存するための変数
+    private string sceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +32,9 @@ public class Title : MonoBehaviour
         cursor = GameObject.Find("Canvas/Cursor").gameObject;
         gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
         optionText = optionTextObj.GetComponent<TextMeshProUGUI>();
+
+        //ここでフェードインアウトのスクリプトを取得
+        fadeManager = fadeManaObj.GetComponent<FadeManager>();
         // fadePanel = GameObject.Find("Canvas/Panel").gameObject;
     }
 
@@ -61,11 +70,17 @@ public class Title : MonoBehaviour
         {
             if (cursorNum == 1)
             {
-                SceneManager.LoadScene("ModeSelectScene");
+                //SceneManager.LoadScene("ModeSelectScene");
+                sceneName = "ModeSelectScene";
+                PlayerPrefs.SetString("SCENENAME", sceneName);
+                fadeManager.isFadeIn = true;
             }
             if (cursorNum == 2)
             {
-                Debug.Log("オプション");
+                //Debug.Log("オプション");
+                sceneName = "OptionScene";
+                PlayerPrefs.SetString("SCENENAME", sceneName);
+                fadeManager.isFadeIn = true;
             }
         }
 

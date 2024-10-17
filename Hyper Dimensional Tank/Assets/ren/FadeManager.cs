@@ -15,7 +15,6 @@ public class FadeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneName = PlayerPrefs.GetString("SCENENAME", "TitleScene");
         alfa = 1.0f;
         red = this.gameObject.GetComponent<Image>().color.r;
         green = this.gameObject.GetComponent<Image>().color.g;
@@ -27,6 +26,7 @@ public class FadeManager : MonoBehaviour
     {
         if (isFadeIn)
         {
+            sceneName = PlayerPrefs.GetString("SCENENAME", "TitleScene");
             this.gameObject.GetComponent<Image>().color = new Color(red, green, blue, alfa);
             alfa += fadeSpeed;
             Debug.Log(alfa);
