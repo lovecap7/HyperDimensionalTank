@@ -2,38 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleBlock : MonoBehaviour
+public class SingleBlockRevival : MonoBehaviour
 {
-    public GameObject Object;
-    float time;
-    Vector3 vector;
+    [SerializeField]GameObject MinBlock;
+    [SerializeField]GameObject MiddleBlock;
+    [SerializeField]GameObject StrongBlock;
+
+    [SerializeField] GameObject Player;
+
+    Vector3 SpawnPos;
+
+    int count = 0;
+
+    int RandPosx = 0;
+    int RandPosz = 0;
+
+    int RangeStart = -7;
+    int RangeEnd = 8;
+    
 
     GameObject Temp;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        time += Time.deltaTime;
+        count++;    //FixedUpdateのときは1秒が50フレームになる
 
-        if(time > 5)
+        if(count > 500/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
         {
-            Generate();
+            count=0;    // カウントの初期化
+            //RandPosx =Random.Range(RangeStart,RangeEnd);
+            //RandPosz =Random.Range(RangeStart,RangeEnd);
+            //Instantiate(MinBlock,new Vector3(RandPosx,1,RandPosz),Quaternion.identity);   // 出したいブロックを
+            //RandPosx = Random.Range(RangeStart, RangeEnd);
+            //RandPosz = Random.Range(RangeStart, RangeEnd);
+            //Instantiate(MiddleBlock,new Vector3(RandPosx,1,RandPosz),Quaternion.identity);   // 出したいブロックを
+            //RandPosx = Random.Range(RangeStart, RangeEnd);
+            //RandPosz = Random.Range(RangeStart, RangeEnd);
+            //Instantiate(StrongBlock,new Vector3(RandPosx,1,RandPosz),Quaternion.identity);   // 出したいブロックを
 
-            //時間の再計測
-            time = 0;
+            do
+            {
+                RandPosx = Random.Range(RangeStart, RangeEnd);
+                RandPosz = Random.Range(RangeStart, RangeEnd);
+                SpawnPos = new Vector3(RandPosx, 1, RandPosz);
+            } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+
+            // ブロックの生成
+
+            Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void Generate()
-    {
-        Temp = Instantiate(Object, new Vector3(3, Random.Range(3, 5), 0), Quaternion.identity);
-    }
+   
 }
