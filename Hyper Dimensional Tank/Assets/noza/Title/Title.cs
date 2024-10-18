@@ -14,9 +14,9 @@ public class Title : MonoBehaviour
     private Vector2 inputValue;
 
     
-    public float speed = 1.0f;
+    public float speed = 0.1f;
     private float time;
-    private TextMeshProUGUI gameStartText; 
+    //private TextMeshProUGUI gameStartText; 
     GameObject gameStartTextObj;
     // GameObject fadePanel;
 
@@ -26,11 +26,15 @@ public class Title : MonoBehaviour
     //次に行くシーンの名前を保存するための変数
     private string sceneName;
 
+    private float sizeChangeTime = 0;
+    private float changeScale= 0f;
+    private bool enlarge = false;
+
     // Start is called before the first frame update
     void Start()
     {
         gameStartTextObj = GameObject.Find("Canvas/GameStartText").gameObject;
-        gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
+        //gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
 
         //ここでフェードインアウトのスクリプトを取得
         fadeManager = fadeManaObj.GetComponent<FadeManager>();
@@ -40,7 +44,28 @@ public class Title : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameStartText.color = GetTextColorAlpha(gameStartText.color);
+        //gameStartText.color = GetTextColorAlpha(gameStartText.color);
+        changeScale = Time.deltaTime * 0.1f;
+
+        if (sizeChangeTime < 0)
+        {
+            enlarge = true;
+        }
+        if (sizeChangeTime > 1f)
+        {
+            enlarge = false;
+        }
+
+        if (enlarge == true)
+        {
+            sizeChangeTime += Time.deltaTime;
+            gameStartTextObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+        }
+        else
+        {
+            sizeChangeTime -= Time.deltaTime;
+            gameStartTextObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+        }
         // Wキーを押したらcursorNumに1代入
         //if (Input.GetKeyDown(KeyCode.W))
         //{
@@ -56,7 +81,7 @@ public class Title : MonoBehaviour
         //}
         //if (cursorNum == 1)
         //{
-           
+
         //}
         //if (cursorNum == 2)
         //{
@@ -83,16 +108,17 @@ public class Title : MonoBehaviour
         //    }
         //}
 
-        
+
     }
 
-    Color GetTextColorAlpha(Color color)
-    {
-        time += Time.deltaTime * speed * 5.0f;
-        color.a = Mathf.Sin(time);
+    //ちかちかなんかで使ってあげたい
+    //Color GetTextColorAlpha(Color color)
+    //{
+    //    time += Time.deltaTime * speed * 20.0f;
+    //    color.a = Mathf.Sin(time);
 
-        return color;
-    }
+    //    return color;
+    //}
 
     //public void OnSelect(InputAction.CallbackContext context)
     //{
