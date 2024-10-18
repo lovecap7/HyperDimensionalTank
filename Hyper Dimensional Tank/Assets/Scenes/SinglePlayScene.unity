@@ -1919,8 +1919,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Timer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5a5cf61a03b398a4e9657c4fa0c0e676, type: 2}
-  m_sharedMaterial: {fileID: -1455819678585570042, guid: 5a5cf61a03b398a4e9657c4fa0c0e676, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb9e39f1e49ec4d499e9cbe7e81e9653, type: 2}
+  m_sharedMaterial: {fileID: -2567456274440770066, guid: eb9e39f1e49ec4d499e9cbe7e81e9653, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5917,8 +5917,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Score \n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5a5cf61a03b398a4e9657c4fa0c0e676, type: 2}
-  m_sharedMaterial: {fileID: -1455819678585570042, guid: 5a5cf61a03b398a4e9657c4fa0c0e676, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb9e39f1e49ec4d499e9cbe7e81e9653, type: 2}
+  m_sharedMaterial: {fileID: -2567456274440770066, guid: eb9e39f1e49ec4d499e9cbe7e81e9653, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
