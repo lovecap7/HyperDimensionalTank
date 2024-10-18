@@ -21,6 +21,10 @@ public class ModeSelectManager : MonoBehaviour
     //éüÇ…çsÇ≠ÉVÅ[ÉìÇÃñºëOÇï€ë∂Ç∑ÇÈÇΩÇﬂÇÃïœêî
     private string sceneName;
 
+    private float sizeChangeTime = 0;
+    private float changeScale = 0f;
+    private bool enlarge = false;
+
     //îwåi
     [SerializeField] private GameObject background;
     private Image backgroundColor;
@@ -67,59 +71,178 @@ public class ModeSelectManager : MonoBehaviour
     {
         if (selectIndex == 5)
         {
-            single.color = GetTextColorAlpha(single.color);
+            //single.color = GetTextColorAlpha(single.color);
 
-            multi.color = new Color32(0, 0, 0, 255);
-            tutorial.color = new Color32(0, 0, 0, 255);
-            option.color = new Color32(0, 0, 0, 255);
-            title.color = new Color32(0, 0, 0, 255);
+            //multi.color = new Color32(0, 0, 0, 255);
+            //tutorial.color = new Color32(0, 0, 0, 255);
+            //option.color = new Color32(0, 0, 0, 255);
+            //title.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-500, 260, 0);
             backgroundColor.color = new Color32(170, 41, 25, 255);
+            if (sizeChangeTime < 0)
+            {
+                enlarge = true;
+            }
+            if (sizeChangeTime > 1f)
+            {
+                enlarge = false;
+            }
+
+            if (enlarge == true)
+            {
+                sizeChangeTime += Time.deltaTime;
+                singleObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+            }
+            else
+            {
+                sizeChangeTime -= Time.deltaTime;
+                singleObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+            }
+        }
+        else
+        {
+            singleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         if (selectIndex == 4)
         {
-            multi.color = GetTextColorAlpha(multi.color);
+            //multi.color = GetTextColorAlpha(multi.color);
 
-            single.color = new Color32(0, 0, 0, 255);
-            tutorial.color = new Color32(0, 0, 0, 255);
-            option.color = new Color32(0, 0, 0, 255);
-            title.color = new Color32(0, 0, 0, 255);
+            //single.color = new Color32(0, 0, 0, 255);
+            //tutorial.color = new Color32(0, 0, 0, 255);
+            //option.color = new Color32(0, 0, 0, 255);
+            //title.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-500, 130, 0);
             backgroundColor.color = new Color32(25, 169, 146, 255);
+            if (sizeChangeTime < 0)
+            {
+                enlarge = true;
+            }
+            if (sizeChangeTime > 1f)
+            {
+                enlarge = false;
+            }
+
+            if (enlarge == true)
+            {
+                sizeChangeTime += Time.deltaTime;
+                multiObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+            }
+            else
+            {
+                sizeChangeTime -= Time.deltaTime;
+                multiObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+            }
+        }
+        else
+        {
+            multiObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         if (selectIndex == 3)
         {
-            tutorial.color = GetTextColorAlpha(tutorial.color);
+           // tutorial.color = GetTextColorAlpha(tutorial.color);
 
-            single.color = new Color32(0, 0, 0, 255);
-            multi.color = new Color32(0, 0, 0, 255);
-            option.color = new Color32(0, 0, 0, 255);
-            title.color = new Color32(0, 0, 0, 255);
+            //single.color = new Color32(0, 0, 0, 255);
+            //multi.color = new Color32(0, 0, 0, 255);
+            //option.color = new Color32(0, 0, 0, 255);
+            //title.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-500, 0, 0);
             backgroundColor.color = new Color32(169, 143, 25, 255);
+            if (sizeChangeTime < 0)
+            {
+                enlarge = true;
+            }
+            if (sizeChangeTime > 1f)
+            {
+                enlarge = false;
+            }
+
+            if (enlarge == true)
+            {
+                sizeChangeTime += Time.deltaTime;
+                tutorialObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+            }
+            else
+            {
+                sizeChangeTime -= Time.deltaTime;
+                tutorialObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+            }
+        }
+        else
+        {
+            tutorialObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         if (selectIndex == 2)
         {
-            option.color = GetTextColorAlpha(option.color);
+            //option.color = GetTextColorAlpha(option.color);
 
-            single.color = new Color32(0, 0, 0, 255);
-            multi.color = new Color32(0, 0, 0, 255);
-            tutorial.color = new Color32(0, 0, 0, 255);
-            title.color = new Color32(0, 0, 0, 255);
+            //single.color = new Color32(0, 0, 0, 255);
+            //multi.color = new Color32(0, 0, 0, 255);
+            //tutorial.color = new Color32(0, 0, 0, 255);
+            //title.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-500, -120, 0);
             backgroundColor.color = new Color32(75, 13, 115, 255);
+            if (sizeChangeTime < 0)
+            {
+                enlarge = true;
+            }
+            if (sizeChangeTime > 1f)
+            {
+                enlarge = false;
+            }
+
+            if (enlarge == true)
+            {
+                sizeChangeTime += Time.deltaTime;
+                optionObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+            }
+            else
+            {
+                sizeChangeTime -= Time.deltaTime;
+                optionObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+            }
+        }
+        else
+        {
+            optionObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         if (selectIndex == 1)
         {
-            title.color = GetTextColorAlpha(title.color);
+            //title.color = GetTextColorAlpha(title.color);
 
-            single.color = new Color32(0, 0, 0, 255);
-            multi.color = new Color32(0, 0, 0, 255);
-            tutorial.color = new Color32(0, 0, 0, 255);
-            option.color = new Color32(0, 0, 0, 255);
+            //single.color = new Color32(0, 0, 0, 255);
+            //multi.color = new Color32(0, 0, 0, 255);
+            //tutorial.color = new Color32(0, 0, 0, 255);
+            //option.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-500, -250, 0);
             backgroundColor.color = new Color32(50, 120, 100, 255);
+            if (sizeChangeTime < 0)
+            {
+                enlarge = true;
+            }
+            if (sizeChangeTime > 1f)
+            {
+                enlarge = false;
+            }
+
+            if (enlarge == true)
+            {
+                sizeChangeTime += Time.deltaTime;
+                titleObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
+            }
+            else
+            {
+                sizeChangeTime -= Time.deltaTime;
+                titleObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
+            }
         }
+        else
+        {
+            titleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        changeScale = Time.deltaTime * 0.1f;
+
+        
         //if (Input.GetKeyDown(KeyCode.W))
         //{
         //    cursorNum++;
@@ -178,13 +301,13 @@ public class ModeSelectManager : MonoBehaviour
         //    cursorNum = 1;
         //}
     }
-    Color GetTextColorAlpha(Color color)
-    {
-        time += Time.deltaTime * speed * 5.0f;
-        color.a = Mathf.Sin(time);
+    //Color GetTextColorAlpha(Color color)
+    //{
+    //    time += Time.deltaTime * speed * 5.0f;
+    //    color.a = Mathf.Sin(time);
 
-        return color;
-    }
+    //    return color;
+    //}
 
     public void OnSelect(InputAction.CallbackContext context)
     {
