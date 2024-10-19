@@ -43,11 +43,14 @@ public class ModeSelectManager : MonoBehaviour
     GameObject tutorialObj;
     GameObject optionObj;
     GameObject titleObj;
-    //float alfa;
-    //float speed = 0.01f;
-    // Start is called before the first frame update
+    //se
+    [SerializeField] private AudioClip[] seSound = new AudioClip[2];
+    //public AudioClip beamSound;
+    private AudioSource audioSource;
     void Start()
     {
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
         //ここでフェードインアウトのスクリプトを取得
         fadeManager = fadeManaObj.GetComponent<FadeManager>();
         backgroundColor = background.GetComponent<Image>(); 
@@ -77,7 +80,7 @@ public class ModeSelectManager : MonoBehaviour
             //tutorial.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
             //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-500, 260, 0);
+            cursor.transform.localPosition = new Vector3(-530, 260, 0);
             backgroundColor.color = new Color32(170, 41, 25, 255);
             if (sizeChangeTime < 0)
             {
@@ -111,7 +114,7 @@ public class ModeSelectManager : MonoBehaviour
             //tutorial.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
             //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-500, 130, 0);
+            cursor.transform.localPosition = new Vector3(-530, 130, 0);
             backgroundColor.color = new Color32(25, 169, 146, 255);
             if (sizeChangeTime < 0)
             {
@@ -145,7 +148,7 @@ public class ModeSelectManager : MonoBehaviour
             //multi.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
             //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-500, 0, 0);
+            cursor.transform.localPosition = new Vector3(-530, 0, 0);
             backgroundColor.color = new Color32(169, 143, 25, 255);
             if (sizeChangeTime < 0)
             {
@@ -179,7 +182,7 @@ public class ModeSelectManager : MonoBehaviour
             //multi.color = new Color32(0, 0, 0, 255);
             //tutorial.color = new Color32(0, 0, 0, 255);
             //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-500, -120, 0);
+            cursor.transform.localPosition = new Vector3(-530, -120, 0);
             backgroundColor.color = new Color32(75, 13, 115, 255);
             if (sizeChangeTime < 0)
             {
@@ -213,7 +216,7 @@ public class ModeSelectManager : MonoBehaviour
             //multi.color = new Color32(0, 0, 0, 255);
             //tutorial.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-500, -250, 0);
+            cursor.transform.localPosition = new Vector3(-530, -250, 0);
             backgroundColor.color = new Color32(50, 120, 100, 255);
             if (sizeChangeTime < 0)
             {
@@ -318,10 +321,12 @@ public class ModeSelectManager : MonoBehaviour
             Debug.Log(inputSelect);
             if (inputSelect.y < -0.02f)
             {
+                audioSource.PlayOneShot(seSound[0]);
                 selectIndex -= 1;
             }
             else if (inputSelect.y > 0.02f)
             {
+                audioSource.PlayOneShot(seSound[0]);
                 selectIndex += 1;
             }
 
@@ -342,30 +347,35 @@ public class ModeSelectManager : MonoBehaviour
         {
             if (selectIndex == 5)
             {
+                audioSource.PlayOneShot(seSound[1]);
                 sceneName = "TestScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
             if (selectIndex == 4)
             {
+                audioSource.PlayOneShot(seSound[1]);
                 sceneName = "TestScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
             if (selectIndex == 3)
             {
+                audioSource.PlayOneShot(seSound[1]);
                 sceneName = "TestScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
             if (selectIndex == 2)
             {
+                audioSource.PlayOneShot(seSound[1]);
                 sceneName = "OptionScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
             if (selectIndex == 1)
             {
+                audioSource.PlayOneShot(seSound[1]);
                 sceneName = "TitleScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;

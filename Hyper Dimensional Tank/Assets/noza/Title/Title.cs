@@ -29,10 +29,13 @@ public class Title : MonoBehaviour
     private float sizeChangeTime = 0;
     private float changeScale= 0f;
     private bool enlarge = false;
-
-    // Start is called before the first frame update
+    [SerializeField] private AudioClip seSound;
+    //public AudioClip beamSound;
+    private AudioSource audioSource;
     void Start()
     {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
         gameStartTextObj = GameObject.Find("Canvas/GameStartText").gameObject;
         //gameStartText = gameStartTextObj.GetComponent<TextMeshProUGUI>();
 
@@ -130,6 +133,7 @@ public class Title : MonoBehaviour
     {
         if (context.started) // ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚Æ‚«
         {
+            audioSource.PlayOneShot(seSound);
             sceneName = "ModeSelectScene";
             PlayerPrefs.SetString("SCENENAME", sceneName);
             fadeManager.isFadeIn = true;

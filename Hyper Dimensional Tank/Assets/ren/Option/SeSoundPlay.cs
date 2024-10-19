@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class SeSoundPlay : MonoBehaviour
 {
     //SE
-    [SerializeField] private AudioClip[] seSound = new AudioClip[3];
+    [SerializeField] private AudioClip seSound;
     //public AudioClip beamSound;
     private AudioSource audioSource;
     // Start is called before the first frame update
@@ -23,19 +23,19 @@ public class SeSoundPlay : MonoBehaviour
 
     //}
 
-    public void OnDecide(InputAction.CallbackContext context)
-    {
-        if (context.started) // ボタンを押したとき
-        {
-            audioSource.PlayOneShot(seSound[0]);
-        }     
-    }
+    //public void OnDecide(InputAction.CallbackContext context)
+    //{
+    //    if (context.started) // ボタンを押したとき
+    //    {
+    //        audioSource.PlayOneShot(seSound);
+    //    }     
+    //}
 
     public void OnCursorMove(InputAction.CallbackContext context)
     {
         if (context.started) // ボタンを押したとき
         {
-            audioSource.PlayOneShot(seSound[1]);
+            audioSource.PlayOneShot(seSound);
         }
     }
 }
