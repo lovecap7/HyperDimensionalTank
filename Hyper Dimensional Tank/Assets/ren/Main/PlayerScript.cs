@@ -105,7 +105,7 @@ public class PlayerScript : MonoBehaviour
     private PlayerControl playerControl;
 
     //SE
-    public AudioClip[] seSound = new AudioClip[2];
+    public AudioClip seSound;
     //public AudioClip beamSound;
     private AudioSource audioSource;
 
@@ -209,6 +209,7 @@ public class PlayerScript : MonoBehaviour
             Destroy(newBeam, 1); //弾を消す
             return;
         }
+       
         //ビームのための間頭は動かせる
         if (isLeft)
         {
@@ -328,7 +329,7 @@ public class PlayerScript : MonoBehaviour
         if (isShotNomal)
         {
             //音(sound1)を鳴らす
-            audioSource.PlayOneShot(seSound[0]);
+            audioSource.PlayOneShot(seSound);
             //弾の発射する場所を取得する
             Vector3 bulletPosition = shotPoint.transform.position;
             //
@@ -350,7 +351,7 @@ public class PlayerScript : MonoBehaviour
         if (isShotStrong)
         {
             //音(sound1)を鳴らす
-            audioSource.PlayOneShot(seSound[0]);
+            audioSource.PlayOneShot(seSound);
             //弾の発射する場所を取得する
             Vector3 bulletPosition = shotPoint.transform.position;
             //
@@ -387,8 +388,6 @@ public class PlayerScript : MonoBehaviour
         }
         if (context.started && isShotBeam) // ボタンを押したとき
         {
-            //音(sound1)を鳴らす
-            audioSource.PlayOneShot(seSound[1]);
             beamCharge.SetActive(true);
             isBeamCount = true;
         }
