@@ -56,12 +56,19 @@ public class GameManeger : MonoBehaviour
 
     //勝ったプレイヤーの番号を保存　1Pは1 2Pは2
     private int winPlayerIndex = 0;
+    //ゲーム終了フラグ
+    private bool isFinish = false;
+    [SerializeField] private GameObject endSe;
     //数秒たったらシーン移動
     private int sceneMoveFrame = 90;
+
+    [SerializeField]private GameObject normalBgm;
+    [SerializeField]private GameObject climaxBgm;
 
     // Start is called before the first frame update
     void Start()
     {
+
         Application.targetFrameRate = 60;
         playerObj1P = GameObject.Find("Player1");
         playerObj2P = GameObject.Find("Player2");
@@ -94,12 +101,25 @@ public class GameManeger : MonoBehaviour
        
         respownPanel1P.SetActive(false);
         respownPanel2P.SetActive(false);
-      
+
+     
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isFinish)
+        {
+            endSe.SetActive(true);
+            if (sceneMoveFrame < 0)
+            {
+                sceneMoveFrame = 0;
+                //シーン移動
+                SceneManager.LoadScene("ResultScene");
+            }
+            sceneMoveFrame--;
+            return;
+        }
         if (playerScript1P.playerStock < 0)
         {
             //勝敗を書く
@@ -108,13 +128,7 @@ public class GameManeger : MonoBehaviour
             playerObj1P.SetActive(false);
             //gamesetText2P.text = "WIN";
             PlayerPrefs.SetInt("Winner", 2);
-            if (sceneMoveFrame < 0)
-            {
-                sceneMoveFrame = 0;
-                //シーン移動
-                SceneManager.LoadScene("ResultScene");
-            }
-            sceneMoveFrame--;
+            isFinish = true;
             return;
         }
         if (playerScript1P.isDead)
@@ -145,13 +159,7 @@ public class GameManeger : MonoBehaviour
             playerObj2P.SetActive(false);
             //gamesetText1P.text = "WIN";
             PlayerPrefs.SetInt("Winner", 1);
-            if(sceneMoveFrame < 0)
-            {
-                sceneMoveFrame = 0;
-                //シーン移動
-                SceneManager.LoadScene("ResultScene");
-            }
-            sceneMoveFrame--;
+            isFinish = true;
             return;
         }
         if (playerScript2P.isDead)
@@ -174,6 +182,13 @@ public class GameManeger : MonoBehaviour
                 playerObj2P.transform.position = respornPoint2.transform.position;
             }
         }
+
+        if (playerScript1P.playerStock < 1 || playerScript2P.playerStock < 1)
+        {
+            normalBgm.SetActive(false);
+            climaxBgm.SetActive(true);
+        }
+
     }
 
     private void FixedUpdate()

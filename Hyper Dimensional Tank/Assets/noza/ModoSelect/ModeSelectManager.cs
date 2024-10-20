@@ -31,23 +31,21 @@ public class ModeSelectManager : MonoBehaviour
     private Image backgroundColor;
     //モードセレクトのパーツども
     //0~4まである4が"ひとりで"
-    int selectIndex = 4;//一人でから
+    int selectIndex = 3;//一人でから
     GameObject cursor;
     public float speed = 1.0f;
     private float time;
     private TextMeshProUGUI single;
     private TextMeshProUGUI multi;
-    private TextMeshProUGUI tutorial;
     private TextMeshProUGUI option;
     private TextMeshProUGUI title;
     GameObject singleObj;
     GameObject multiObj;
-    GameObject tutorialObj;
     GameObject optionObj;
     GameObject titleObj;
 
     //画像
-    [SerializeField] private GameObject[] modeImage = new GameObject[5];
+    [SerializeField] private GameObject[] modeImage = new GameObject[4];
     //se
     [SerializeField] private AudioClip[] seSound = new AudioClip[2];
     //public AudioClip beamSound;
@@ -62,12 +60,10 @@ public class ModeSelectManager : MonoBehaviour
 
         singleObj = GameObject.Find("Canvas/Single").gameObject;
         multiObj = GameObject.Find("Canvas/Multi").gameObject;
-        tutorialObj = GameObject.Find("Canvas/Tutorial").gameObject;
         optionObj = GameObject.Find("Canvas/Option").gameObject;
         titleObj = GameObject.Find("Canvas/Title").gameObject;
         single = singleObj.GetComponent<TextMeshProUGUI>();
         multi = multiObj.GetComponent<TextMeshProUGUI>();
-        tutorial = tutorialObj.GetComponent<TextMeshProUGUI>();
         option = optionObj.GetComponent<TextMeshProUGUI>();
         title =titleObj.GetComponent<TextMeshProUGUI>();
 
@@ -79,14 +75,8 @@ public class ModeSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (selectIndex == 4)
+        if (selectIndex == 3)
         {
-            //single.color = GetTextColorAlpha(single.color);
-
-            //multi.color = new Color32(0, 0, 0, 255);
-            //tutorial.color = new Color32(0, 0, 0, 255);
-            //option.color = new Color32(0, 0, 0, 255);
-            //title.color = new Color32(0, 0, 0, 255);
             cursor.transform.localPosition = new Vector3(-530, 260, 0);
             backgroundColor.color = new Color32(170, 41, 25, 255);
             if (sizeChangeTime < 0)
@@ -108,20 +98,22 @@ public class ModeSelectManager : MonoBehaviour
                 sizeChangeTime -= Time.deltaTime;
                 singleObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
             }
-        }
-        else
-        {
-            singleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
-        if (selectIndex == 3)
-        {
             //multi.color = GetTextColorAlpha(multi.color);
 
             //single.color = new Color32(0, 0, 0, 255);
             //tutorial.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
             //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-530, 130, 0);
+           
+        }
+        else
+        {
+            singleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+           
+        }
+        if (selectIndex == 2)
+        {
+            cursor.transform.localPosition = new Vector3(-530, 87, 0);
             backgroundColor.color = new Color32(25, 169, 146, 255);
             if (sizeChangeTime < 0)
             {
@@ -147,49 +139,9 @@ public class ModeSelectManager : MonoBehaviour
         {
             multiObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-        if (selectIndex == 2)
-        {
-           // tutorial.color = GetTextColorAlpha(tutorial.color);
-
-            //single.color = new Color32(0, 0, 0, 255);
-            //multi.color = new Color32(0, 0, 0, 255);
-            //option.color = new Color32(0, 0, 0, 255);
-            //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-530, 0, 0);
-            backgroundColor.color = new Color32(169, 143, 25, 255);
-            if (sizeChangeTime < 0)
-            {
-                enlarge = true;
-            }
-            if (sizeChangeTime > 1f)
-            {
-                enlarge = false;
-            }
-
-            if (enlarge == true)
-            {
-                sizeChangeTime += Time.deltaTime;
-                tutorialObj.transform.localScale += new Vector3(changeScale, changeScale, changeScale);
-            }
-            else
-            {
-                sizeChangeTime -= Time.deltaTime;
-                tutorialObj.transform.localScale -= new Vector3(changeScale, changeScale, changeScale);
-            }
-        }
-        else
-        {
-            tutorialObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
         if (selectIndex == 1)
         {
-            //option.color = GetTextColorAlpha(option.color);
-
-            //single.color = new Color32(0, 0, 0, 255);
-            //multi.color = new Color32(0, 0, 0, 255);
-            //tutorial.color = new Color32(0, 0, 0, 255);
-            //title.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-530, -120, 0);
+            cursor.transform.localPosition = new Vector3(-530, -85, 0);
             backgroundColor.color = new Color32(75, 13, 115, 255);
             if (sizeChangeTime < 0)
             {
@@ -320,7 +272,7 @@ public class ModeSelectManager : MonoBehaviour
     //}
     void ChangeImage(int Index)
     {
-        for (int i = 0;i<5;++i)
+        for (int i = 0;i<4;++i)
         {
             modeImage[i].SetActive(false);
         }
@@ -347,9 +299,9 @@ public class ModeSelectManager : MonoBehaviour
            
         }
 
-        if (selectIndex > 4)
+        if (selectIndex > 3)
         {
-            selectIndex = 4;
+            selectIndex = 3;
         }
         if (selectIndex < 0)
         {
@@ -360,17 +312,10 @@ public class ModeSelectManager : MonoBehaviour
     {
         if (context.started) // ボタンを押したとき
         {
-            if (selectIndex == 4)
-            {
-                audioSource.PlayOneShot(seSound[1]);
-                sceneName = "TestScene";
-                PlayerPrefs.SetString("SCENENAME", sceneName);
-                fadeManager.isFadeIn = true;
-            }
             if (selectIndex == 3)
             {
                 audioSource.PlayOneShot(seSound[1]);
-                sceneName = "TestScene";
+                sceneName = "SinglePlayScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
