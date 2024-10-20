@@ -8,6 +8,7 @@ using Unity.Properties;
 using UnityEngine.SceneManagement;
 using static UnityEngine.EventSystems.StandaloneInputModule;
 using UnityEngine.InputSystem;
+using System;
 
 
 public class ModeSelectManager : MonoBehaviour
@@ -29,7 +30,8 @@ public class ModeSelectManager : MonoBehaviour
     [SerializeField] private GameObject background;
     private Image backgroundColor;
     //モードセレクトのパーツども
-    int selectIndex = 5;
+    //0~4まである4が"ひとりで"
+    int selectIndex = 4;//一人でから
     GameObject cursor;
     public float speed = 1.0f;
     private float time;
@@ -43,6 +45,9 @@ public class ModeSelectManager : MonoBehaviour
     GameObject tutorialObj;
     GameObject optionObj;
     GameObject titleObj;
+
+    //画像
+    [SerializeField] private GameObject[] modeImage = new GameObject[5];
     //se
     [SerializeField] private AudioClip[] seSound = new AudioClip[2];
     //public AudioClip beamSound;
@@ -67,12 +72,14 @@ public class ModeSelectManager : MonoBehaviour
         title =titleObj.GetComponent<TextMeshProUGUI>();
 
         cursor = GameObject.Find("Canvas/Cursor").gameObject;
+
+        ChangeImage(selectIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (selectIndex == 5)
+        if (selectIndex == 4)
         {
             //single.color = GetTextColorAlpha(single.color);
 
@@ -106,7 +113,7 @@ public class ModeSelectManager : MonoBehaviour
         {
             singleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-        if (selectIndex == 4)
+        if (selectIndex == 3)
         {
             //multi.color = GetTextColorAlpha(multi.color);
 
@@ -140,7 +147,7 @@ public class ModeSelectManager : MonoBehaviour
         {
             multiObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-        if (selectIndex == 3)
+        if (selectIndex == 2)
         {
            // tutorial.color = GetTextColorAlpha(tutorial.color);
 
@@ -174,7 +181,7 @@ public class ModeSelectManager : MonoBehaviour
         {
             tutorialObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-        if (selectIndex == 2)
+        if (selectIndex == 1)
         {
             //option.color = GetTextColorAlpha(option.color);
 
@@ -208,7 +215,7 @@ public class ModeSelectManager : MonoBehaviour
         {
             optionObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-        if (selectIndex == 1)
+        if (selectIndex == 0)
         {
             //title.color = GetTextColorAlpha(title.color);
 
@@ -242,10 +249,10 @@ public class ModeSelectManager : MonoBehaviour
         {
             titleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-
+        ChangeImage(selectIndex);
         changeScale = Time.deltaTime * 0.1f;
 
-        
+
         //if (Input.GetKeyDown(KeyCode.W))
         //{
         //    cursorNum++;
@@ -311,6 +318,14 @@ public class ModeSelectManager : MonoBehaviour
 
     //    return color;
     //}
+    void ChangeImage(int Index)
+    {
+        for (int i = 0;i<5;++i)
+        {
+            modeImage[i].SetActive(false);
+        }
+        modeImage[Index].SetActive(true);
+    }
 
     public void OnSelect(InputAction.CallbackContext context)
     {
@@ -329,29 +344,22 @@ public class ModeSelectManager : MonoBehaviour
                 audioSource.PlayOneShot(seSound[0]);
                 selectIndex += 1;
             }
-
+           
         }
 
-        if (selectIndex > 5)
+        if (selectIndex > 4)
         {
-            selectIndex = 5;
+            selectIndex = 4;
         }
-        if (selectIndex < 1)
+        if (selectIndex < 0)
         {
-            selectIndex = 1;
+            selectIndex = 0;
         }
     }
     public void OnDecide(InputAction.CallbackContext context)
     {
         if (context.started) // ボタンを押したとき
         {
-            if (selectIndex == 5)
-            {
-                audioSource.PlayOneShot(seSound[1]);
-                sceneName = "TestScene";
-                PlayerPrefs.SetString("SCENENAME", sceneName);
-                fadeManager.isFadeIn = true;
-            }
             if (selectIndex == 4)
             {
                 audioSource.PlayOneShot(seSound[1]);
@@ -369,11 +377,18 @@ public class ModeSelectManager : MonoBehaviour
             if (selectIndex == 2)
             {
                 audioSource.PlayOneShot(seSound[1]);
-                sceneName = "OptionScene";
+                sceneName = "TestScene";
                 PlayerPrefs.SetString("SCENENAME", sceneName);
                 fadeManager.isFadeIn = true;
             }
             if (selectIndex == 1)
+            {
+                audioSource.PlayOneShot(seSound[1]);
+                sceneName = "OptionScene";
+                PlayerPrefs.SetString("SCENENAME", sceneName);
+                fadeManager.isFadeIn = true;
+            }
+            if (selectIndex == 0)
             {
                 audioSource.PlayOneShot(seSound[1]);
                 sceneName = "TitleScene";
