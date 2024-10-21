@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -19,10 +19,22 @@ public class AudioMixerScript : MonoBehaviour
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider seSlider;
     private float setDecibel;
+
+    [SerializeField] private AudioClip seSound;
+    //public AudioClip beamSound;
+    private AudioSource audioSource;
+
+    //フェードインアウトをするためにこれらがいる
+    [SerializeField] GameObject fadeManaObj;
+    FadeManager fadeManager;
+    string sceneName;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //ここでフェードインアウトのスクリプトを取得
+        fadeManager = fadeManaObj.GetComponent<FadeManager>();
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
         masterSlider.value = PlayerPrefs.GetFloat("MasterValue", 1f);
         bgmSlider.value = PlayerPrefs.GetFloat("BgmValue", 1f);
         seSlider.value = PlayerPrefs.GetFloat("SeValue", 1f);
@@ -104,6 +116,7 @@ public class AudioMixerScript : MonoBehaviour
     {
         if (selectIndex == 1)
         {
+            audioSource.PlayOneShot(seSound);
             Debug.Log("保存");
             float masterValue = masterSlider.value;
             PlayerPrefs.SetFloat("MasterValue", masterValue);
@@ -111,7 +124,12 @@ public class AudioMixerScript : MonoBehaviour
             PlayerPrefs.SetFloat("BgmValue", bgmValue);
             float seValue = seSlider.value;
             PlayerPrefs.SetFloat("SeValue", seValue);
+            //SceneManager.LoadScene("ModeSelectScene");
+            sceneName = "ModeSelectScene";
+            PlayerPrefs.SetString("SCENENAME", sceneName);
+            fadeManager.isFadeIn = true;
         }
+      
     }
 
     public void OnChangeValue(InputAction.CallbackContext context)
@@ -140,10 +158,11 @@ public class AudioMixerScript : MonoBehaviour
         {
             selectIndex = 0;
         }
+      
     }
 
-    public void OnCancel(InputAction.CallbackContext context)
-    {
-        SceneManager.LoadScene("ModeSelectScene");
-    }
+    //public void OnCancel(InputAction.CallbackContext context)
+    //{
+       
+    //}
 }
