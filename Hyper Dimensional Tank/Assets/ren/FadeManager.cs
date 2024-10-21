@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FadeManager : MonoBehaviour
 {
     public bool isFadeIn = false;
-    private float fadeSpeed =0.001f;
+    private float fadeSpeed =0.02f;
     float alfa; //“§–¾“x
     float red, green, blue;//RGB
     string sceneName;
@@ -22,7 +22,7 @@ public class FadeManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isFadeIn)
         {
@@ -30,9 +30,9 @@ public class FadeManager : MonoBehaviour
             this.gameObject.GetComponent<Image>().color = new Color(red, green, blue, alfa);
             alfa += fadeSpeed;
             Debug.Log(alfa);
-            if (alfa >= 1.0f)
+            if (alfa >= 1.2f)
             {
-                Debug.Log(alfa);
+               
                 SceneManager.LoadScene(sceneName);
             }
         }
