@@ -45,11 +45,11 @@ public class PlayerScript : MonoBehaviour
    
 
     //弾の速さ
-    private float nomalBulletSpeed = 800f;
-    private float strongBulletSpeed = 400f;
+    private float nomalBulletSpeed = 600f;
+    private float strongBulletSpeed = 300f;
 
     //ダメージ
-    private int damegeNomal = 10;
+    private int damegeNomal = 5;
     private int damegeStrong = 30;
     private int damegeBeam = 2;
 
@@ -73,8 +73,10 @@ public class PlayerScript : MonoBehaviour
 
 
     //玉のクールタイム
-    private int coolTime;
-    private int canCoolTime = 60;
+    private int nomalCoolTime;
+    private int canNomalCoolTime = 25;
+    private int strongCoolTime;
+    private int canStrongCoolTime = 75;
     private bool isShotNomal = true;
     private bool isShotStrong = true;
     //チャージエフェクト
@@ -158,7 +160,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (startCount != null)
         {
@@ -241,17 +243,18 @@ public class PlayerScript : MonoBehaviour
                 isBarrier = false;
                 barrier.SetActive(false);
             }
-            isShotNomal = false;
-            isShotStrong = false;
         }
         //ビーム発射フレームカウント開始
-        if (isBeamCount && !isBarrier)
+        if (isBeamCount)
         {
            
             beamGauge = 0;
             beamFreamCount++;
-            if (beamFreamCount > 60.0f)
+            if (beamFreamCount > 50.0f)
             {
+                //プレイヤーの反動
+                playerRb.AddForce(this.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
+
                 beamCharge.SetActive(false);
                 maxEffect.SetActive(false);
                 //弾の発射する場所を取得する
@@ -259,10 +262,11 @@ public class PlayerScript : MonoBehaviour
                 //
                 newBeam = Instantiate(bulletBeam, bulletPosition, head.gameObject.transform.rotation);
 
-                
                 beamFreamCount = 0;
                 isBeamCount = false;
                 isShotBeam = false;
+
+               
             }
             return;
         }
@@ -273,24 +277,41 @@ public class PlayerScript : MonoBehaviour
 
         //玉のクールタイム
         //クールタイムカウント
-        coolTime++;
-        if (coolTime > canCoolTime)
+        //if (coolTime > 20)
+        //{
+        //    moveSpeed = tempSpeed;
+        //}
+        nomalCoolTime++;
+        if (nomalCoolTime > canNomalCoolTime)
         {
-            isShotNomal = true;
+            if (!isShotNomal)
+            {
+                //プレイヤーの反動
+                playerRb.AddForce(this.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
+                //弾の発射する場所を取得する
+                Vector3 bulletPosition = shotPoint.transform.position;
+                //
+                GameObject newBullet = Instantiate(bulletNomal, bulletPosition, head.gameObject.transform.rotation);
+                Vector3 dir = newBullet.transform.forward;
+                newBullet.GetComponent<Rigidbody>().AddForce(dir * nomalBulletSpeed * Time.deltaTime, ForceMode.Impulse);
+                nomalCoolTime = 0;
+            }
+        }
+        strongCoolTime++;
+        if(strongCoolTime > canStrongCoolTime)
+        {
             isShotStrong = true;
         }
-        if (coolTime > 20)
-        {
-            moveSpeed = tempSpeed;
-        }
 
 
-      
+        //isShotNomal = false;
+        //isShotStrong = true;
+
         //チャージ中は球を打てなくしたい
         //ゲージチャージ
         if (isCharge)
         {
-           if(beamGauge >= 100)
+            if (beamGauge >= 100)
             {
                 //isCharge = false;
                 beamGauge = 100.0f;
@@ -304,8 +325,6 @@ public class PlayerScript : MonoBehaviour
                 beamGauge += chargeValue;
                 chargeEffect.SetActive(true);
             }
-            isShotNomal = false;
-            isShotStrong = false;
             return;
         }
 
@@ -321,35 +340,33 @@ public class PlayerScript : MonoBehaviour
  
     public void OnShotNomal(InputAction.CallbackContext context)
     {
-        if (startCount != null || isBarrier)
+        if (startCount != null || isBarrier || isCharge)
         {
             return;
         }
-        moveSpeed = 0;
-        if (isShotNomal)
+        if (context.performed)
         {
-            //音(sound1)を鳴らす
-            audioSource.PlayOneShot(seSound);
-            //弾の発射する場所を取得する
-            Vector3 bulletPosition = shotPoint.transform.position;
-            //
-            GameObject newBullet = Instantiate(bulletNomal, bulletPosition, head.gameObject.transform.rotation);
-            Vector3 dir = newBullet.transform.forward;
-            newBullet.GetComponent<Rigidbody>().AddForce(dir * nomalBulletSpeed * Time.deltaTime, ForceMode.Impulse);
-            coolTime = 0;
-            isShotStrong = false;
+            moveSpeed = 0;
+            //押した瞬間の処理
             isShotNomal = false;
+        }
+        if (context.canceled)
+        {
+            moveSpeed = tempSpeed;
+            //離した瞬間の処理
+            isShotNomal = true;
         }
     }
     public void OnShotStrong(InputAction.CallbackContext context)
     {
-        if (startCount != null || isBarrier)
+        if (startCount != null || isBarrier || isCharge)
         {
             return;
         }
-        moveSpeed = 0;
-        if (isShotStrong)
+        if (context.started && isShotStrong) // ボタンを押したとき
         {
+            //プレイヤーの反動
+            playerRb.AddForce(this.transform.forward * -500 * Time.deltaTime, ForceMode.Impulse);
             //音(sound1)を鳴らす
             audioSource.PlayOneShot(seSound);
             //弾の発射する場所を取得する
@@ -358,10 +375,10 @@ public class PlayerScript : MonoBehaviour
             GameObject newBullet = Instantiate(bulletStrong, bulletPosition, head.gameObject.transform.rotation);
             Vector3 dir = newBullet.transform.forward;
             newBullet.GetComponent<Rigidbody>().AddForce(dir * strongBulletSpeed * Time.deltaTime, ForceMode.Impulse);
-            coolTime = 0;
-            isShotNomal = false;
+            strongCoolTime = 0;
             isShotStrong = false;
         }
+        
     }
 
     public void OnShotBarrier(InputAction.CallbackContext context)
@@ -386,7 +403,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (context.started && isShotBeam) // ボタンを押したとき
+        if (context.started && isShotBeam && !isBarrier) // ボタンを押したとき
         {
             beamCharge.SetActive(true);
             isBeamCount = true;
