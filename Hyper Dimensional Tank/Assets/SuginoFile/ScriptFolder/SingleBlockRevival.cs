@@ -19,6 +19,8 @@ public class SingleBlockRevival : MonoBehaviour
 
     int RangeStart = -7;
     int RangeEnd = 8;
+
+    
     
 
     GameObject Temp;
@@ -31,7 +33,7 @@ public class SingleBlockRevival : MonoBehaviour
     {
         count++;    //FixedUpdateのときは1秒が50フレームになる
 
-        if(count > 500/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
+        if(count > 100/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
         {
             count=0;    // カウントの初期化
             //RandPosx =Random.Range(RangeStart,RangeEnd);
@@ -50,13 +52,16 @@ public class SingleBlockRevival : MonoBehaviour
                 RandPosz = Random.Range(RangeStart, RangeEnd);
                 SpawnPos = new Vector3(RandPosx, 1, RandPosz);
             } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+            // ブロックの生成
             Instantiate(MinBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+           
             do
             {
                 RandPosx = Random.Range(RangeStart, RangeEnd);
                 RandPosz = Random.Range(RangeStart, RangeEnd);
                 SpawnPos = new Vector3(RandPosx, 1, RandPosz);
             } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+            // ブロックの生成
             Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
             do
             {
@@ -68,6 +73,7 @@ public class SingleBlockRevival : MonoBehaviour
             // ブロックの生成
             Instantiate(StrongBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
         }
+       
     }
    
 }

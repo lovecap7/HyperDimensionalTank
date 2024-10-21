@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8143544702246562928}
   - component: {fileID: 9129432944407398132}
   - component: {fileID: 5241936033579250759}
+  - component: {fileID: 6675341631697886412}
   m_Layer: 0
   m_Name: MinBlock 1
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 2
+  HP: 1
   scoreValue: 50
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+--- !u!114 &6675341631697886412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216426901287284978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74067ed9d484dc6459b94d5baae40626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 3

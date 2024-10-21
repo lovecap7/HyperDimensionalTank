@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4124848833789099145}
   - component: {fileID: 4022440908764510992}
   - component: {fileID: 1359303191905327979}
+  - component: {fileID: 3153464467556466354}
   m_Layer: 0
   m_Name: StrongBlock 1
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68319a6371ff2047a09f95003ff9842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 5
   scoreValue: 1000
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+--- !u!114 &3153464467556466354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170278203487439300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74067ed9d484dc6459b94d5baae40626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 3
