@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BlockMove : MonoBehaviour
 {
-    [SerializeField] private float MoveSpeed = 3.0f;　　// 動く幅
+    private Vector3 targetpos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetpos = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         // ブロックの移動
-        transform.position = new Vector3(Mathf.Sin(Time.time) * MoveSpeed, 0, 0);
+        transform.position = new Vector3(Mathf.Sin(Time.time) * 3.0f + targetpos.x, targetpos.y, targetpos.z);
     }
 }
