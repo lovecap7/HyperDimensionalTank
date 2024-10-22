@@ -37,7 +37,7 @@ public class GameManeger : MonoBehaviour
     [SerializeField] private GameObject xBottun1P;
     [SerializeField] private GameObject xBottun2P;
 
-
+   
    //リスぽ
    private int respawnTime1P = 180;
     private int respawnTime2P = 180;
@@ -48,10 +48,11 @@ public class GameManeger : MonoBehaviour
     private TextMeshProUGUI respownTimerText1P;
     private TextMeshProUGUI respownTimerText2P;
 
+   
 
 
-    //リス地
-    [SerializeField] private GameObject respornPoint1;
+   //リス地
+   [SerializeField] private GameObject respornPoint1;
     [SerializeField] private GameObject respornPoint2;
 
     //勝ったプレイヤーの番号を保存　1Pは1 2Pは2
@@ -106,7 +107,7 @@ public class GameManeger : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (isFinish)
         {
@@ -120,81 +121,13 @@ public class GameManeger : MonoBehaviour
             sceneMoveFrame--;
             return;
         }
-        if (playerScript1P.playerStock < 0)
-        {
-            //勝敗を書く
-            //gamesetPanel1P.SetActive(true);
-            //gamesetPanel2P.SetActive(true);
-            playerObj1P.SetActive(false);
-            //gamesetText2P.text = "WIN";
-            PlayerPrefs.SetInt("Winner", 2);
-            isFinish = true;
-            return;
-        }
-        if (playerScript1P.isDead)
-        {
-           
-            playerObj1P.SetActive(false);
-            respownPanel1P.SetActive(true);
-            respawnTime1P--;
-            respownTimerText1P.text = ((respawnTime1P / 60) + 1).ToString("d1");
-
-            if (respawnTime1P < 0)//復活
-            {
-                respownPanel1P.SetActive(false);
-                stockUi1P[playerScript1P.playerStock].SetActive(false);
-                playerScript1P.isDead = false;
-                playerScript1P.isInvincibility = true;
-                playerScript1P.myHp = 100;
-                playerScript1P.beamGauge += 50;
-                playerObj1P.SetActive(true);
-                respawnTime1P = 180;
-                playerObj1P.transform.position = respornPoint1.transform.position;
-            }
-        }
-
-        if (playerScript2P.playerStock < 0)
-        {
-            //gamesetPanel1P.SetActive(true);
-            //gamesetPanel2P.SetActive(true);
-            playerObj2P.SetActive(false);
-            //gamesetText1P.text = "WIN";
-            PlayerPrefs.SetInt("Winner", 1);
-            isFinish = true;
-            return;
-        }
-        if (playerScript2P.isDead)
-        {
-           
-            playerObj2P.SetActive(false);
-            respownPanel2P.SetActive(true);
-            respawnTime2P--;
-            respownTimerText2P.text = ((respawnTime2P / 60) + 1).ToString("d1");
-
-            if (respawnTime2P < 0)//復活
-            {
-                respownPanel2P.SetActive(false);
-                stockUi2P[playerScript2P.playerStock].SetActive(false);
-                playerScript2P.isDead = false;
-                playerScript2P.isInvincibility = true;
-                playerScript2P.myHp = 100;
-                playerScript2P.beamGauge += 50;
-                playerObj2P.SetActive(true);
-                respawnTime2P = 180;
-                playerObj2P.transform.position = respornPoint2.transform.position;
-            }
-        }
-
+        PlayerDead1P();
+        PlayerDead2P();
         if (playerScript1P.playerStock < 1 || playerScript2P.playerStock < 1)
         {
             normalBgm.SetActive(false);
             climaxBgm.SetActive(true);
         }
-
-    }
-
-    private void FixedUpdate()
-    {
         //HPの変化を描画
         hpBar1P.value = playerScript1P.myHp / 100.0f;
         hpBar2P.value = playerScript2P.myHp / 100.0f;
@@ -237,6 +170,68 @@ public class GameManeger : MonoBehaviour
         else
         {
             xBottun2P.SetActive(false);
+        }
+    }
+
+    void PlayerDead1P()
+    {
+        if (playerScript1P.playerStock < 0)
+        {
+            //勝敗を書く
+            //gamesetPanel1P.SetActive(true);
+            //gamesetPanel2P.SetActive(true);
+            //gamesetText2P.text = "WIN";
+            PlayerPrefs.SetInt("Winner", 2);
+            isFinish = true;
+            return;
+        }
+        if (playerScript1P.isDead)
+        {
+            respownPanel1P.SetActive(true);
+            respawnTime1P--;
+            respownTimerText1P.text = ((respawnTime1P / 60) + 1).ToString("d1");
+
+            if (respawnTime1P < 0)//復活
+            {
+                respownPanel1P.SetActive(false);
+                stockUi1P[playerScript1P.playerStock].SetActive(false);
+                playerScript1P.isInvincibility = true;
+                playerScript1P.myHp = 100;
+                playerScript1P.beamGauge += 50;
+                respawnTime1P = 180;
+                playerObj1P.transform.position = respornPoint1.transform.position;
+                playerScript1P.isDead = false;
+            }
+        }
+    }
+    void PlayerDead2P()
+    {
+        if (playerScript2P.playerStock < 0)
+        {
+            //gamesetPanel1P.SetActive(true);
+            //gamesetPanel2P.SetActive(true);
+            //gamesetText1P.text = "WIN";
+            PlayerPrefs.SetInt("Winner", 1);
+            isFinish = true;
+            return;
+        }
+        if (playerScript2P.isDead)
+        {
+            respawnTime2P--;
+            respownPanel2P.SetActive(true);
+            respownTimerText2P.text = ((respawnTime2P / 60) + 1).ToString("d1");
+
+            if (respawnTime2P < 0)//復活
+            {
+                respownPanel2P.SetActive(false);
+                stockUi2P[playerScript2P.playerStock].SetActive(false);
+                playerScript2P.isInvincibility = true;
+                playerScript2P.myHp = 100;
+                playerScript2P.beamGauge += 50;
+                respawnTime2P = 180;
+                playerObj2P.transform.position = respornPoint2.transform.position;
+                playerScript2P.isDead = false;
+            }
         }
     }
 }

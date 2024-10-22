@@ -57,6 +57,9 @@ public class PlayerScript : MonoBehaviour
     public float myHp = 100;
     public bool isDead = false;
     public int playerStock = 2;
+    //残機を一回だけ減らす
+    bool oneAction = false;
+
 
     //復活したときに無敵  public OK
     public bool isInvincibility = false;
@@ -138,6 +141,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void HeadRotationLeft(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (context.started) // ボタンを押したとき
         {
             isLeft = true;
@@ -150,6 +157,10 @@ public class PlayerScript : MonoBehaviour
 
     public void HeadRotationRight(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (context.started) // ボタンを押したとき
         {
             isRight = true;
@@ -167,16 +178,15 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
-        if (myHp <= 0)
-        {
-            isDead = true;
-            Instantiate(deadExplosion, this.transform.position, Quaternion.identity);
-            playerStock--;
-        }
+        Dead();
 
         if (isDead)
         {
             return;
+        }
+        else
+        {
+            oneAction = false;
         }
         if(this.transform.position.y < -3)
         {
@@ -340,6 +350,10 @@ public class PlayerScript : MonoBehaviour
  
     public void OnShotNomal(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (startCount != null || isBarrier || isCharge)
         {
             return;
@@ -359,6 +373,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnShotStrong(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (startCount != null || isBarrier || isCharge)
         {
             return;
@@ -383,6 +401,10 @@ public class PlayerScript : MonoBehaviour
 
     public void OnShotBarrier(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (startCount != null)
         {
             return;
@@ -398,7 +420,10 @@ public class PlayerScript : MonoBehaviour
 
     public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
-        
+        if (isDead)
+        {
+            return;
+        }
         if (startCount != null && !isBarrier)
         {
             return;
@@ -428,6 +453,10 @@ public class PlayerScript : MonoBehaviour
 
         public void OnMove(InputAction.CallbackContext context)
     {
+        if (isDead)
+        {
+            return;
+        }
         // 入力値を保持しておく
         inputMove = context.ReadValue<Vector2>();
      
@@ -438,6 +467,10 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (isInvincibility)
         {
             return;
@@ -464,6 +497,10 @@ public class PlayerScript : MonoBehaviour
     //ビームの多段ヒット
     public void OnTriggerStay(Collider other)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (isInvincibility)
         {
             return;
@@ -480,6 +517,20 @@ public class PlayerScript : MonoBehaviour
             if (other.gameObject.tag == "Beam")
             {
                 myHp -= damegeBeam * tempCut;
+            }
+        }
+    }
+
+    private void Dead()
+    {
+        if (myHp <= 0)
+        {
+            if (!oneAction)
+            {
+                isDead = true;
+                Instantiate(deadExplosion, this.transform.position, Quaternion.identity);
+                playerStock--;
+                oneAction = true;
             }
         }
     }
