@@ -197,7 +197,6 @@ public class GameManeger : MonoBehaviour
                 stockUi1P[playerScript1P.playerStock].SetActive(false);
                 playerScript1P.isInvincibility = true;
                 playerScript1P.myHp = 100;
-                playerScript1P.beamGauge += 50;
                 respawnTime1P = 180;
                 playerObj1P.transform.position = respornPoint1.transform.position;
                 playerScript1P.isDead = false;
@@ -227,7 +226,6 @@ public class GameManeger : MonoBehaviour
                 stockUi2P[playerScript2P.playerStock].SetActive(false);
                 playerScript2P.isInvincibility = true;
                 playerScript2P.myHp = 100;
-                playerScript2P.beamGauge += 50;
                 respawnTime2P = 180;
                 playerObj2P.transform.position = respornPoint2.transform.position;
                 playerScript2P.isDead = false;

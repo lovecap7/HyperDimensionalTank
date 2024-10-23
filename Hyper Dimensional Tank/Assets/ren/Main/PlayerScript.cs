@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+using static UnityEngine.EventSystems.StandaloneInputModule;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 //using static UnityEditor.Timeline.TimelinePlaybackControls;
 //using static UnityEngine.EventSystems.StandaloneInputModule;
@@ -260,10 +261,10 @@ public class PlayerScript : MonoBehaviour
            
             beamGauge = 0;
             beamFreamCount++;
-            if (beamFreamCount > 50.0f)
+            if (beamFreamCount > 100.0f)
             {
                 //プレイヤーの反動
-                playerRb.AddForce(this.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
+                playerRb.AddForce(head.gameObject.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
 
                 beamCharge.SetActive(false);
                 maxEffect.SetActive(false);
@@ -297,7 +298,7 @@ public class PlayerScript : MonoBehaviour
             if (!isShotNomal)
             {
                 //プレイヤーの反動
-                playerRb.AddForce(this.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
+                playerRb.AddForce(head.gameObject.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
                 //弾の発射する場所を取得する
                 Vector3 bulletPosition = shotPoint.transform.position;
                 //
@@ -354,7 +355,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge)
+        if (startCount != null || isBarrier || isCharge || !isShotStrong)
         {
             return;
         }
@@ -377,14 +378,14 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge)
+        if (startCount != null || isBarrier || isCharge || !isShotNomal)
         {
             return;
         }
         if (context.started && isShotStrong) // ボタンを押したとき
         {
             //プレイヤーの反動
-            playerRb.AddForce(this.transform.forward * -500 * Time.deltaTime, ForceMode.Impulse);
+            playerRb.AddForce(head.gameObject.transform.forward * -500 * Time.deltaTime, ForceMode.Impulse);
             //音(sound1)を鳴らす
             audioSource.PlayOneShot(seSound);
             //弾の発射する場所を取得する
@@ -528,6 +529,19 @@ public class PlayerScript : MonoBehaviour
             if (!oneAction)
             {
                 isDead = true;
+                //入力をすべてリセット
+                inputMove = new Vector2(0, 0); moveSpeed = tempSpeed;
+                isShotNomal = true;
+                isCharge = false; 
+                chargeEffect.SetActive(false);
+                audioSource.Stop();
+                beamCharge.SetActive(false);
+                maxEffect.SetActive(false);
+                beamFreamCount = 0;
+                isBeamCount = false;
+                isShotBeam = false;
+                chargeValue += 0.1f; 
+                /////////////////////////
                 Instantiate(deadExplosion, this.transform.position, Quaternion.identity);
                 playerStock--;
                 oneAction = true;
