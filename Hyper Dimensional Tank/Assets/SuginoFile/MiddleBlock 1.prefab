@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5600683091257132345}
   - component: {fileID: 8073146956511643919}
   - component: {fileID: 3720850212360553485}
-  - component: {fileID: 2069469596460830708}
   m_Layer: 0
   m_Name: MiddleBlock 1
   m_TagString: Untagged
@@ -122,16 +121,3 @@ MonoBehaviour:
   HP: 2
   scoreValue: 100
   explosion: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
---- !u!114 &2069469596460830708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6085437286449643550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74067ed9d484dc6459b94d5baae40626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 3
