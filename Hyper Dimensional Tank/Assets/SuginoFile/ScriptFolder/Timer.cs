@@ -12,28 +12,37 @@ public class Timer : MonoBehaviour
 
     // タイマー用テキスト
     [SerializeField] TextMeshProUGUI timerText;
- 
-        
+
+
+    //スタートするまで動けない
+    private StartCount startCount;
+    [SerializeField] private GameObject startCountObj;
     // 経過時間
-    float time;
+    float time = 0.0f;
     private void Start()
     {
         //フレームレートを60fpsにする
         Application.targetFrameRate = 60;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // フレーム毎の経過時間をtime変数に追加
-        time += Time.deltaTime;
-        
         // time変数にをint型にし制限時間から引いた数をint型のlimit型のに代入
         int remaining = timeLimit - (int)time;
         // timerTextを更新していく
         timerText.text = $"のこり : {remaining.ToString("D3")}";
+        if (startCountObj != null)
+        {
+            return;
+        }
+        // フレーム毎の経過時間をtime変数に追加
+        time += Time.deltaTime;
+        
+       
 
-        if(remaining < 0 )
+        if(remaining <= 0 )
         {
             SceneManager.LoadScene("SingleResultScene");
         }

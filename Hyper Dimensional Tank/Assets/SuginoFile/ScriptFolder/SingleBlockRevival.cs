@@ -12,7 +12,10 @@ public class SingleBlockRevival : MonoBehaviour
 
     Vector3 SpawnPos;
 
-    int count = 0;
+    int minCount = 0;
+    int middleCount = 0;
+    int strongCount = 0;
+
 
     int RandPosx = 0;
     int RandPosz = 0;
@@ -31,11 +34,11 @@ public class SingleBlockRevival : MonoBehaviour
     }
     void FixedUpdate()
     {
-        count++;    //FixedUpdateのときは1秒が50フレームになる
+        minCount++;    //FixedUpdateのときは1秒が50フレームになる
 
-        if(count > 100/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
+        if (minCount > 100/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
         {
-            count=0;    // カウントの初期化
+            minCount = 0;    // カウントの初期化
             //RandPosx =Random.Range(RangeStart,RangeEnd);
             //RandPosz =Random.Range(RangeStart,RangeEnd);
             //Instantiate(MinBlock,new Vector3(RandPosx,1,RandPosz),Quaternion.identity);   // 出したいブロックを
@@ -54,15 +57,13 @@ public class SingleBlockRevival : MonoBehaviour
             } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
             // ブロックの生成
             Instantiate(MinBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
-           
-            do
-            {
-                RandPosx = Random.Range(RangeStart, RangeEnd);
-                RandPosz = Random.Range(RangeStart, RangeEnd);
-                SpawnPos = new Vector3(RandPosx, 1, RandPosz);
-            } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
-            // ブロックの生成
-            Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+
+        }
+       
+        if (middleCount > 200/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
+        {
+            middleCount = 0;    // カウントの初期化
+
             do
             {
                 RandPosx = Random.Range(RangeStart, RangeEnd);
@@ -71,9 +72,22 @@ public class SingleBlockRevival : MonoBehaviour
             } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
 
             // ブロックの生成
-            Instantiate(StrongBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+            Instantiate(MiddleBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
         }
-       
+        if (strongCount > 500/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
+        {
+            strongCount = 0;    // カウントの初期化
+
+            do
+            {
+                RandPosx = Random.Range(RangeStart, RangeEnd);
+                RandPosz = Random.Range(RangeStart, RangeEnd);
+                SpawnPos = new Vector3(RandPosx, 1, RandPosz);
+            } while (Vector3.Distance(SpawnPos, Player.transform.position) < 4);
+            // ブロックの生成
+            Instantiate(StrongBlock, new Vector3(RandPosx, 1, RandPosz), Quaternion.identity);
+
+        }
     }
    
 }
