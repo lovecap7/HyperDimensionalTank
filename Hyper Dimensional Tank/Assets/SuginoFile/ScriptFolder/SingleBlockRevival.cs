@@ -35,6 +35,8 @@ public class SingleBlockRevival : MonoBehaviour
     void FixedUpdate()
     {
         minCount++;    //FixedUpdateのときは1秒が50フレームになる
+        middleCount++;
+        strongCount++;
 
         if (minCount > 100/*生成間隔*/)  // もし、カウントが生成する感覚を超えたら
         {
