@@ -115,6 +115,17 @@ public class PlayerScript : MonoBehaviour
     //public AudioClip beamSound;
     private AudioSource audioSource;
 
+    // 野﨑
+    private bool isStop = false;
+
+   
+
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -340,13 +351,16 @@ public class PlayerScript : MonoBehaviour
         }
 
 
+        if (!isStop)
+        {
+            //プレイヤーの移動
+            playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
+            //Quaternion.AngleAxis(度数法, 軸);
+            this.transform.rotation *= Quaternion.AngleAxis(inputMove.x * bodyRotateSpeed * Time.deltaTime, Vector3.up);
 
-        //プレイヤーの移動
-        playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
-        //Quaternion.AngleAxis(度数法, 軸);
-        this.transform.rotation *= Quaternion.AngleAxis(inputMove.x * bodyRotateSpeed * Time.deltaTime, Vector3.up);
+        }
 
-     
+
     }
  
     public void OnShotNomal(InputAction.CallbackContext context)
@@ -355,7 +369,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge || !isShotStrong)
+        if (startCount != null || isBarrier || isCharge || !isShotStrong || isStop)
         {
             return;
         }
@@ -378,7 +392,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge || !isShotNomal)
+        if (startCount != null || isBarrier || isCharge || !isShotNomal || isStop)
         {
             return;
         }
@@ -406,7 +420,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null)
+        if (startCount != null || isStop)
         {
             return;
         }
@@ -421,11 +435,12 @@ public class PlayerScript : MonoBehaviour
 
     public void OnChargeAndBeam(InputAction.CallbackContext context)
     {
+        //
         if (isDead)
         {
             return;
         }
-        if (startCount != null && !isBarrier)
+        if (startCount != null || isBarrier || isStop)
         {
             return;
         }
@@ -464,8 +479,8 @@ public class PlayerScript : MonoBehaviour
     }
 
    
-
-
+    
+    // 当たり判定
     private void OnTriggerEnter(Collider other)
     {
         if (isDead)
@@ -493,8 +508,23 @@ public class PlayerScript : MonoBehaviour
                 myHp -= damegeStrong * tempCut;
             }
 
-        }
+        } 
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Cube")
+        {
+            isStop = true;
+           
+            Invoke("CubeStop", 5.0f);
+        }
+        
+    }
+    void CubeStop()
+    {
+        isStop = false;
+    }
+    
     //ビームの多段ヒット
     public void OnTriggerStay(Collider other)
     {
@@ -548,4 +578,5 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+   
 }

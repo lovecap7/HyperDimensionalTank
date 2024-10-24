@@ -11,6 +11,8 @@ TagManager:
   - StrongBullet
   - Fade
   - Barrier
+  - Cube
+  - Cube1
   layers:
   - Default
   - TransparentFX
