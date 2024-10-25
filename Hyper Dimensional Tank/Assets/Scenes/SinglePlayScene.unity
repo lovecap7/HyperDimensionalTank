@@ -1877,6 +1877,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2117665357073762098, guid: e76f29d7f66bbbf4a965f56b00d0958e, type: 3}
+      propertyPath: bulletNomal
+      value: 
+      objectReference: {fileID: 3686198249015293463, guid: b0548605f1d7d8c4c9be03ee55557646, type: 3}
+    - target: {fileID: 2117665357073762098, guid: e76f29d7f66bbbf4a965f56b00d0958e, type: 3}
       propertyPath: startCountObj
       value: 
       objectReference: {fileID: 1988814448}
