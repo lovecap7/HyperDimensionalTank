@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cube : MonoBehaviour
+public class ItemScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion = null;
@@ -27,10 +27,12 @@ public class Cube : MonoBehaviour
     //}
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-            // Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
+
+   
 }

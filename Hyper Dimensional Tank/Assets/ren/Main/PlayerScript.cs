@@ -351,16 +351,10 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        if (!isStop)
-        {
-            //プレイヤーの移動
-            playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
-            //Quaternion.AngleAxis(度数法, 軸);
-            this.transform.rotation *= Quaternion.AngleAxis(inputMove.x * bodyRotateSpeed * Time.deltaTime, Vector3.up);
-
-        }
-
-
+        //プレイヤーの移動
+        playerRb.AddForce(this.transform.forward * inputMove.y * moveSpeed * Time.deltaTime, ForceMode.Impulse);
+        //Quaternion.AngleAxis(度数法, 軸);
+        this.transform.rotation *= Quaternion.AngleAxis(inputMove.x * bodyRotateSpeed * Time.deltaTime, Vector3.up);
     }
  
     public void OnShotNomal(InputAction.CallbackContext context)
@@ -508,22 +502,10 @@ public class PlayerScript : MonoBehaviour
                 myHp -= damegeStrong * tempCut;
             }
 
-        } 
-    }
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Cube")
-        {
-            isStop = true;
-           
-            Invoke("CubeStop", 5.0f);
         }
-        
+        UseItem(other.gameObject.tag);
     }
-    void CubeStop()
-    {
-        isStop = false;
-    }
+   
     
     //ビームの多段ヒット
     public void OnTriggerStay(Collider other)
@@ -578,5 +560,18 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
-   
+    void UseItem(string tagName)
+    {
+        Debug.Log("item");
+        if (tagName == "Item")
+        {
+            moveSpeed *= 2.0f;
+
+            Invoke("ItemFinish", 5.0f);
+        }
+    }
+    void ItemFinish()
+    {
+        moveSpeed = tempSpeed;
+    }
 }
