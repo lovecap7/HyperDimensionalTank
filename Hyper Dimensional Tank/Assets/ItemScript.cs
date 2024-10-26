@@ -17,22 +17,22 @@ public class ItemScript : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 0.5f, 0));
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        Instantiate(explosion, transform.position, Quaternion.identity);
-    //        Destroy(gameObject);
-    //    }
-    //}
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        Instantiate(explosion, transform.position, Quaternion.identity);
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
    
 }

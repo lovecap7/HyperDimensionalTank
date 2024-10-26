@@ -53,6 +53,13 @@ public class PlayerScript : MonoBehaviour
     private int damegeNomal = 5;
     private int damegeStrong = 30;
     private int damegeBeam = 2;
+    //玉のクールタイム
+    private int nomalCoolTime;
+    private int canNomalCoolTime = 25;
+    private int strongCoolTime;
+    private int canStrongCoolTime = 75;
+    private bool isShotNomal = true;
+    private bool isShotStrong = true;
 
     //体力 publicでよい
     public float myHp = 100;
@@ -76,13 +83,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject deadExplosion = null;
 
 
-    //玉のクールタイム
-    private int nomalCoolTime;
-    private int canNomalCoolTime = 25;
-    private int strongCoolTime;
-    private int canStrongCoolTime = 75;
-    private bool isShotNomal = true;
-    private bool isShotStrong = true;
+  
     //チャージエフェクト
     [SerializeField] private GameObject chargeEffect;
     //MAXの時のエフェクト
@@ -116,9 +117,9 @@ public class PlayerScript : MonoBehaviour
     private AudioSource audioSource;
 
     // 野﨑
-    private bool isStop = false;
+    [SerializeField] private GameObject buffSpeedUp;
+    [SerializeField] private GameObject buffFastShotUp;
 
-   
 
 
 
@@ -149,6 +150,10 @@ public class PlayerScript : MonoBehaviour
         tempSpeed = moveSpeed;
         //Componentを取得
         audioSource = GetComponent<AudioSource>();
+
+        //バフ
+        buffSpeedUp.SetActive(false);
+        buffFastShotUp.SetActive(false);
        
     }
     public void HeadRotationLeft(InputAction.CallbackContext context)
@@ -272,7 +277,7 @@ public class PlayerScript : MonoBehaviour
            
             beamGauge = 0;
             beamFreamCount++;
-            if (beamFreamCount > 100.0f)
+            if (beamFreamCount > 50.0f)
             {
                 //プレイヤーの反動
                 playerRb.AddForce(head.gameObject.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
@@ -306,10 +311,10 @@ public class PlayerScript : MonoBehaviour
         nomalCoolTime++;
         if (nomalCoolTime > canNomalCoolTime)
         {
-            if (!isShotNomal)
+            if (!isShotNomal && !isBarrier)
             {
                 //プレイヤーの反動
-                playerRb.AddForce(head.gameObject.transform.forward * -200 * Time.deltaTime, ForceMode.Impulse);
+                playerRb.AddForce(head.gameObject.transform.forward * -100 * Time.deltaTime, ForceMode.Impulse);
                 //弾の発射する場所を取得する
                 Vector3 bulletPosition = shotPoint.transform.position;
                 //
@@ -363,7 +368,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge || !isShotStrong || isStop)
+        if (startCount != null || isBarrier || isCharge || !isShotStrong)
         {
             return;
         }
@@ -386,14 +391,14 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isCharge || !isShotNomal || isStop)
+        if (startCount != null || isBarrier || isCharge || !isShotNomal)
         {
             return;
         }
         if (context.started && isShotStrong) // ボタンを押したとき
         {
             //プレイヤーの反動
-            playerRb.AddForce(head.gameObject.transform.forward * -500 * Time.deltaTime, ForceMode.Impulse);
+            playerRb.AddForce(head.gameObject.transform.forward * -250 * Time.deltaTime, ForceMode.Impulse);
             //音(sound1)を鳴らす
             audioSource.PlayOneShot(seSound);
             //弾の発射する場所を取得する
@@ -414,7 +419,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isStop)
+        if (startCount != null)
         {
             return;
         }
@@ -434,7 +439,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        if (startCount != null || isBarrier || isStop)
+        if (startCount != null)
         {
             return;
         }
@@ -562,16 +567,35 @@ public class PlayerScript : MonoBehaviour
     }
     void UseItem(string tagName)
     {
-        Debug.Log("item");
-        if (tagName == "Item")
+        Debug.Log("ItemSpeed");
+        if (tagName == "ItemSpeed")
         {
+            buffSpeedUp.SetActive(true);
             moveSpeed *= 2.0f;
-
-            Invoke("ItemFinish", 5.0f);
+            Invoke("ItemSpeedFinish", 7.0f);
+        }
+        if(tagName == "ItemFastShot")
+        {
+            buffFastShotUp.SetActive(true);
+            canNomalCoolTime = 10;
+            canStrongCoolTime = 30;
+            Invoke("ItemFastShotFinish", 5.0f);
+        }
+        if (tagName == "ItemGage")
+        {
+            beamGauge += 30.0f;
         }
     }
-    void ItemFinish()
+    void ItemSpeedFinish()
     {
+        buffSpeedUp.SetActive(false);
         moveSpeed = tempSpeed;
     }
+    void ItemFastShotFinish()
+    {
+        buffFastShotUp.SetActive(false);
+        canNomalCoolTime = 25;
+        canStrongCoolTime = 75;
+    } 
+   
 }
