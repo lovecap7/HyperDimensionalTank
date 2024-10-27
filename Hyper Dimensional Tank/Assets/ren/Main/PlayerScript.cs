@@ -119,7 +119,10 @@ public class PlayerScript : MonoBehaviour
     // –ìú±
     [SerializeField] private GameObject buffSpeedUp;
     [SerializeField] private GameObject buffFastShotUp;
-
+    [SerializeField] private GameObject buffGageUp;
+    public bool isBuffSp = false;
+    public bool isBuffFs = false;
+    public bool isBuffG = false;
 
 
 
@@ -154,7 +157,8 @@ public class PlayerScript : MonoBehaviour
         //ƒoƒt
         buffSpeedUp.SetActive(false);
         buffFastShotUp.SetActive(false);
-       
+        buffGageUp.SetActive(false);
+
     }
     public void HeadRotationLeft(InputAction.CallbackContext context)
     {
@@ -572,6 +576,7 @@ public class PlayerScript : MonoBehaviour
         {
             buffSpeedUp.SetActive(true);
             moveSpeed *= 2.0f;
+            isBuffSp =true;
             Invoke("ItemSpeedFinish", 7.0f);
         }
         if(tagName == "ItemFastShot")
@@ -579,23 +584,34 @@ public class PlayerScript : MonoBehaviour
             buffFastShotUp.SetActive(true);
             canNomalCoolTime = 10;
             canStrongCoolTime = 30;
+            isBuffFs = true;
             Invoke("ItemFastShotFinish", 5.0f);
         }
         if (tagName == "ItemGage")
         {
+            buffGageUp.SetActive(true);
             beamGauge += 30.0f;
+            isBuffG = true;
+            Invoke("ItemGageFinish", 1.0f);
         }
     }
     void ItemSpeedFinish()
     {
         buffSpeedUp.SetActive(false);
         moveSpeed = tempSpeed;
+        isBuffSp = false;
     }
     void ItemFastShotFinish()
     {
         buffFastShotUp.SetActive(false);
         canNomalCoolTime = 25;
         canStrongCoolTime = 75;
-    } 
-   
+        isBuffFs = false;
+    }
+    void ItemGageFinish()
+    {
+        buffGageUp.SetActive(false);
+        isBuffG = false;
+    }
+
 }

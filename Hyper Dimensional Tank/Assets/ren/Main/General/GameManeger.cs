@@ -19,11 +19,15 @@ public class GameManeger : MonoBehaviour
     //beamUI
     [SerializeField] private Slider beamBar1P;
     [SerializeField] private Slider beamBar2P;
+   
     //ビームがたまっているかどうかをテキストで表示
     [SerializeField] private GameObject beamTextObj1P;
     [SerializeField] private GameObject beamTextObj2P;
     private TextMeshProUGUI beamText1P;
     private TextMeshProUGUI beamText2P;
+    [SerializeField] private GameObject beamMaxEff1P;
+    [SerializeField] private GameObject beamMaxEff2P;
+
     //残機
     [SerializeField] private GameObject[] stockUi1P;
     [SerializeField] private GameObject[] stockUi2P;
@@ -66,6 +70,15 @@ public class GameManeger : MonoBehaviour
     [SerializeField]private GameObject normalBgm;
     [SerializeField]private GameObject climaxBgm;
 
+    //バフ
+    [SerializeField] private GameObject buffSp1P;
+    [SerializeField] private GameObject buffFs1P;
+    [SerializeField] private GameObject buffG1P;
+
+    [SerializeField] private GameObject buffSp2P;
+    [SerializeField] private GameObject buffFs2P;
+    [SerializeField] private GameObject buffG2P;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +97,8 @@ public class GameManeger : MonoBehaviour
         beamBar2P.value = 0;
         beamText1P = beamTextObj1P.GetComponent<TextMeshProUGUI>();
         beamText2P = beamTextObj2P.GetComponent<TextMeshProUGUI>();
+        beamMaxEff1P.SetActive(false);
+        beamMaxEff2P.SetActive(false);
         //バリアをMAXに
         burrierBar1P.value = 1;
         burrierBar2P.value = 1;
@@ -103,7 +118,15 @@ public class GameManeger : MonoBehaviour
         respownPanel1P.SetActive(false);
         respownPanel2P.SetActive(false);
 
-     
+        //バフ
+        buffSp1P.SetActive(false);
+        buffFs1P.SetActive(false);
+        buffG1P.SetActive(false);
+
+        buffSp2P.SetActive(false);
+        buffFs2P.SetActive(false);
+        buffG2P.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -137,18 +160,22 @@ public class GameManeger : MonoBehaviour
         if (beamBar1P.value < 1.0f)
         {
             beamText1P.text = "チャージ可能";
+            beamMaxEff1P.SetActive(false);
         }
         else
         {
             beamText1P.text = "ビーム発射可能";
+            beamMaxEff1P.SetActive(true);
         }
         if (beamBar2P.value < 1.0f)
         {
             beamText2P.text = "チャージ可能";
+            beamMaxEff2P.SetActive(false);
         }
         else
         {
             beamText2P.text = "ビーム発射可能";
+            beamMaxEff2P.SetActive(true);
         }
 
 
@@ -171,6 +198,62 @@ public class GameManeger : MonoBehaviour
         {
             xBottun2P.SetActive(false);
         }
+
+        //1Pバフ
+        {
+            if (playerScript1P.isBuffSp)
+            {
+                buffSp1P.SetActive(true);
+            }
+            else
+            {
+                buffSp1P.SetActive(false);
+            }
+            if (playerScript1P.isBuffFs)
+            {
+                buffFs1P.SetActive(true);
+            }
+            else
+            {
+                buffFs1P.SetActive(false);
+            }
+            if(playerScript1P.isBuffG)
+            {
+                buffG1P.SetActive(true);
+            }
+            else
+            {
+                buffG1P.SetActive(false);
+            }
+        }
+        //2Pバフ
+        {
+            if (playerScript2P.isBuffSp)
+            {
+                buffSp2P.SetActive(true);
+            }
+            else
+            {
+                buffSp2P.SetActive(false);
+            }
+            if (playerScript2P.isBuffFs)
+            {
+                buffFs2P.SetActive(true);
+            }
+            else
+            {
+                buffFs2P.SetActive(false);
+            }
+            if (playerScript2P.isBuffG)
+            {
+                buffG2P.SetActive(true);
+            }
+            else
+            {
+                buffG2P.SetActive(false);
+            }
+        }
+
     }
 
     void PlayerDead1P()
