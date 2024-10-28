@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SingleShot : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject explosion = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,13 @@ public class SingleShot : MonoBehaviour
             this.transform.position.z <= -30)
         {
             Destroy(this.gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag =="Cube")
+        {
+            Instantiate(explosion,transform.position,Quaternion.identity);
         }
     }
 }
