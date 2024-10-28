@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b02765c99b591540bc3c2d8aaaad6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 30
+  timeLimit: 60
   timerText: {fileID: 705313197}
   startCountObj: {fileID: 1988814448}
 --- !u!4 &1156396605
