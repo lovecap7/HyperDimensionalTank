@@ -6,10 +6,23 @@ public class ItemScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion = null;
+    private int randomNum;
     // Start is called before the first frame update
     void Start()
     {
-       
+        randomNum = Random.Range(0, 3);@// ¦ 0`2‚Ì”ÍˆÍ‚Åƒ‰ƒ“ƒ_ƒ€‚È®”’l‚ª•Ô‚é
+        if(randomNum == 0)
+        {
+            this.gameObject.tag = "ItemSpeed";
+        }
+        else if (randomNum == 1)
+        {
+            this.gameObject.tag = "ItemFastShot";
+        }
+        if (randomNum == 2)
+        {
+            this.gameObject.tag = "ItemGage";
+        }
     }
 
     // Update is called once per frame
