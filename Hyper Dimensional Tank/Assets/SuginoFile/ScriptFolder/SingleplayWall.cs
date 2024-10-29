@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SingleplayWall : MonoBehaviour
 {
-    private static int count = 0;
+    //private static int count = 0;
     [SerializeField]
-    private int HP;
+    private int hp;
 
     // 点数の量(一個壊すたびに一点増える)
     [SerializeField]
@@ -20,33 +20,31 @@ public class SingleplayWall : MonoBehaviour
 
     void Start()
     {
+      
+    }
+    private void OnDestroy()
+    {
         ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        ScoreManager.AddScore(scoreValue);
     }
 
-    
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Bullet")   // 弾に当たったらブロックのHPを減らして壊れたらスコアを追加
         {
-            HP--;
-            if(HP <= 0)
-            {
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                ScoreManager.AddScore(scoreValue);
-            }
-
+            hp--;
         }
         if (other.gameObject.tag == "StrongBullet")
         {
-            HP -= 2;
-            if(HP <= 0)
-            {
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                ScoreManager.AddScore(scoreValue);
-            }
+            hp -= 2;
+        }
+        if (hp <= 0)
+        {
+            OnDestroy();
         }
     }
 
@@ -54,13 +52,13 @@ public class SingleplayWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Beam")
         {
-            count++;
-            if (count >= HP)
+            hp--;
+            if (hp <= 0)
             {
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                ScoreManager.AddScore(scoreValue);
+                OnDestroy();
             }
         }
     }
+
+   
 }

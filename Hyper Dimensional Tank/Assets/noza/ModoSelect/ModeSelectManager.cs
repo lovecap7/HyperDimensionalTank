@@ -28,11 +28,19 @@ public class ModeSelectManager : MonoBehaviour
 
     //背景
     [SerializeField] private GameObject background;
+    
     private Image backgroundColor;
     //モードセレクトのパーツども
     //0~4まである4が"ひとりで"
     int selectIndex = 3;//一人でから
+
+
     GameObject cursor;
+    private Image cursorImage;
+    GameObject centerLine;
+    private Image centerLineImage;
+
+
     public float speed = 1.0f;
     private float time;
     private TextMeshProUGUI single;
@@ -56,7 +64,11 @@ public class ModeSelectManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         //ここでフェードインアウトのスクリプトを取得
         fadeManager = fadeManaObj.GetComponent<FadeManager>();
-        backgroundColor = background.GetComponent<Image>(); 
+        //backgroundColor = background.GetComponent<Image>(); 
+        cursor = GameObject.Find("Canvas/Cursor").gameObject;
+        cursorImage = cursor.GetComponent<Image>();
+        centerLine = GameObject.Find("Canvas/CenterLine").gameObject;
+        centerLineImage = centerLine.GetComponent<Image>();
 
         singleObj = GameObject.Find("Canvas/Single").gameObject;
         multiObj = GameObject.Find("Canvas/Multi").gameObject;
@@ -67,7 +79,7 @@ public class ModeSelectManager : MonoBehaviour
         option = optionObj.GetComponent<TextMeshProUGUI>();
         title =titleObj.GetComponent<TextMeshProUGUI>();
 
-        cursor = GameObject.Find("Canvas/Cursor").gameObject;
+       
 
         ChangeImage(selectIndex);
     }
@@ -77,8 +89,10 @@ public class ModeSelectManager : MonoBehaviour
     {
         if (selectIndex == 3)
         {
-            cursor.transform.localPosition = new Vector3(-530, 260, 0);
-            backgroundColor.color = new Color32(170, 41, 25, 255);
+            cursor.transform.localPosition = new Vector3(0, 260, 0);
+            //backgroundColor.color = new Color32(170, 41, 25, 255);
+            cursorImage.color = new Color32(170, 41, 25, 255);
+            centerLineImage.color = new Color32(170, 41, 25, 255);
             if (sizeChangeTime < 0)
             {
                 enlarge = true;
@@ -113,8 +127,10 @@ public class ModeSelectManager : MonoBehaviour
         }
         if (selectIndex == 2)
         {
-            cursor.transform.localPosition = new Vector3(-530, 87, 0);
-            backgroundColor.color = new Color32(25, 169, 146, 255);
+            cursor.transform.localPosition = new Vector3(0, 87, 0);
+            //backgroundColor.color = new Color32(25, 169, 146, 255);
+            cursorImage.color = new Color32(25, 169, 146, 255);
+            centerLineImage.color = new Color32(25, 169, 146, 255);
             if (sizeChangeTime < 0)
             {
                 enlarge = true;
@@ -141,8 +157,10 @@ public class ModeSelectManager : MonoBehaviour
         }
         if (selectIndex == 1)
         {
-            cursor.transform.localPosition = new Vector3(-530, -85, 0);
-            backgroundColor.color = new Color32(75, 13, 115, 255);
+            cursor.transform.localPosition = new Vector3(0, -85, 0);
+            //backgroundColor.color = new Color32(75, 13, 115, 255);
+            cursorImage.color = new Color32(75, 13, 115, 255);
+            centerLineImage.color = new Color32(75, 13, 115, 255);
             if (sizeChangeTime < 0)
             {
                 enlarge = true;
@@ -175,8 +193,10 @@ public class ModeSelectManager : MonoBehaviour
             //multi.color = new Color32(0, 0, 0, 255);
             //tutorial.color = new Color32(0, 0, 0, 255);
             //option.color = new Color32(0, 0, 0, 255);
-            cursor.transform.localPosition = new Vector3(-530, -250, 0);
-            backgroundColor.color = new Color32(50, 120, 100, 255);
+            cursor.transform.localPosition = new Vector3(0, -270, 0);
+            //backgroundColor.color = new Color32(50, 120, 100, 255);
+            cursorImage.color = new Color32(0, 180, 20, 255);
+            centerLineImage.color = new Color32(0, 180, 20, 255);
             if (sizeChangeTime < 0)
             {
                 enlarge = true;

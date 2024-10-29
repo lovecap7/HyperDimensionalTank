@@ -575,7 +575,7 @@ public class PlayerScript : MonoBehaviour
         if (tagName == "ItemSpeed")
         {
             buffSpeedUp.SetActive(true);
-            moveSpeed *= 2.0f;
+            moveSpeed = 24.0f;
             isBuffSp =true;
             Invoke("ItemSpeedFinish", 7.0f);
         }

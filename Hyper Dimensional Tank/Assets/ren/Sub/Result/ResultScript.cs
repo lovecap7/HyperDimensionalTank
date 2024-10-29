@@ -91,7 +91,7 @@ public class ResultScript : MonoBehaviour
 
     public void OnDicide(InputAction.CallbackContext context)
     {
-        if (isSelect)
+        if (context.started && isSelect)
         {
             if (selectIndex == 1)
             {
