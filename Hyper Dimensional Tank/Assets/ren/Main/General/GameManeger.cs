@@ -61,6 +61,7 @@ public class GameManeger : MonoBehaviour
 
     //勝ったプレイヤーの番号を保存　1Pは1 2Pは2
     private int winPlayerIndex = 0;
+    [SerializeField] private GameObject gamesetPanel;
     //ゲーム終了フラグ
     private bool isFinish = false;
     [SerializeField] private GameObject endSe;
@@ -261,7 +262,7 @@ public class GameManeger : MonoBehaviour
         if (playerScript1P.playerStock < 0)
         {
             //勝敗を書く
-            //gamesetPanel1P.SetActive(true);
+            gamesetPanel.SetActive(true);
             //gamesetPanel2P.SetActive(true);
             //gamesetText2P.text = "WIN";
             PlayerPrefs.SetInt("Winner", 2);
@@ -290,7 +291,7 @@ public class GameManeger : MonoBehaviour
     {
         if (playerScript2P.playerStock < 0)
         {
-            //gamesetPanel1P.SetActive(true);
+            gamesetPanel.SetActive(true);
             //gamesetPanel2P.SetActive(true);
             //gamesetText1P.text = "WIN";
             PlayerPrefs.SetInt("Winner", 1);

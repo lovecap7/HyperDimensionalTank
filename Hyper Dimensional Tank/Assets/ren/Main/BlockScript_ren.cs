@@ -16,7 +16,7 @@ public class BlockScript_ren : MonoBehaviour
     private int randomNum;
     void Start()
     {
-        randomNum = Random.Range(0, 2);　// ※ 0～4の範囲でランダムな整数値が返る
+        randomNum = Random.Range(0, 5);　// ※ 0～4の範囲でランダムな整数値が返る
     }
     private void OnTriggerEnter(Collider other)
     {
