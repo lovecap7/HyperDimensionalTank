@@ -7,6 +7,7 @@ public class BlockScript_ren : MonoBehaviour
     [SerializeField]
     private int hp = 0;
     
+    Color myColor;
     //private int maxHp;
 
     [SerializeField]
@@ -17,6 +18,7 @@ public class BlockScript_ren : MonoBehaviour
     private int randomNum;
     void Start()
     {
+        myColor = this.gameObject.GetComponent<Renderer>().material.color;
         randomNum = Random.Range(0, 5);Å@// Å¶ 0Å`4ÇÃîÕàÕÇ≈ÉâÉìÉ_ÉÄÇ»êÆêîílÇ™ï‘ÇÈ
     }
     //private void OnCollisionEnter(Collision collision)
@@ -54,10 +56,14 @@ public class BlockScript_ren : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             hp--;
+            GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 0);
+            Invoke("back", 0.2f);
         }
         if (other.gameObject.tag == "StrongBullet")
         {
             hp -= 3;
+            GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 0);
+            Invoke("back", 0.2f);
         }
         if (hp <= 0)
         {
@@ -75,6 +81,8 @@ public class BlockScript_ren : MonoBehaviour
         if (other.gameObject.tag == "Beam")
         {
             hp--;
+            GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 0);
+            Invoke("back", 0.2f);
             if (hp <= 0)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
@@ -87,8 +95,8 @@ public class BlockScript_ren : MonoBehaviour
 
         }
     }
-
-
-
-
+    void back()
+    {
+        this.gameObject.transform.GetComponent<Renderer>().material.color = myColor;
+    }
 }
