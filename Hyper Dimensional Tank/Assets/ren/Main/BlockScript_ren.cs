@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BlockScript_ren : MonoBehaviour
 {
-    private int count = 0;
     [SerializeField]
-    private int sCount;
+    private int hp = 0;
+    
+    //private int maxHp;
 
     [SerializeField]
     private GameObject explosion = null;
@@ -18,20 +19,50 @@ public class BlockScript_ren : MonoBehaviour
     {
         randomNum = Random.Range(0, 5);@// ¦ 0`4‚Ì”ÍˆÍ‚Åƒ‰ƒ“ƒ_ƒ€‚È®”’l‚ª•Ô‚é
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Bullet")
+    //    {
+    //        hp--;
+    //    }
+    //    if (collision.gameObject.tag == "StrongBullet")
+    //    {
+    //        hp -= 2;
+    //    }
+    //    if (hp <= 0)
+    //    {
+    //        Instantiate(explosion, transform.position, Quaternion.identity);
+    //        Destroy(gameObject);
+    //    }
+    //}
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Beam")
+    //    {
+    //        hp--;
+    //        if (hp <= 0)
+    //        {
+    //            Instantiate(explosion, transform.position, Quaternion.identity);
+    //            Destroy(gameObject);
+    //        }
+
+    //    }
+    //}
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")
         {
-            count++;
+            hp--;
         }
         if (other.gameObject.tag == "StrongBullet")
         {
-            count += 2;
+            hp -= 3;
         }
-        if (count >= sCount)
+        if (hp <= 0)
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            if(randomIndex == randomNum)
+            if (randomIndex == randomNum)
             {
                 Instantiate(itemBox, transform.position, Quaternion.identity);
             }
@@ -43,8 +74,8 @@ public class BlockScript_ren : MonoBehaviour
     {
         if (other.gameObject.tag == "Beam")
         {
-            count++;
-            if (count >= sCount)
+            hp--;
+            if (hp <= 0)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 if (randomIndex == randomNum)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
+    private int hp = 5;
+
     [SerializeField]
     private GameObject explosion = null;
     private int randomNum;
@@ -37,15 +39,33 @@ public class ItemScript : MonoBehaviour
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+        if (other.gameObject.tag == "Bullet")
+        {
+            hp--;
+        }
+        if (other.gameObject.tag == "StrongBullet")
+        {
+            hp -= 3;
+        }
+        if (hp <= 0)
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Instantiate(explosion, transform.position, Quaternion.identity);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Beam")
+        {
+            hp--;
+            if (hp <= 0)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
 
-   
+        }
+    }
+
+
 }

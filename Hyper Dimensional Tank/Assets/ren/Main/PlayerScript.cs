@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     //ダメージ
     private int damegeNomal = 5;
     private int damegeStrong = 30;
-    private int damegeBeam = 2;
+    private float damegeBeam = 1.25f;
     //玉のクールタイム
     private int nomalCoolTime;
     private int canNomalCoolTime = 25;
@@ -561,7 +561,7 @@ public class PlayerScript : MonoBehaviour
                 beamFreamCount = 0;
                 isBeamCount = false;
                 isShotBeam = false;
-                chargeValue += 0.1f; 
+                chargeValue += 0.05f; 
                 /////////////////////////
                 Instantiate(deadExplosion, this.transform.position, Quaternion.identity);
                 playerStock--;
@@ -577,15 +577,15 @@ public class PlayerScript : MonoBehaviour
             buffSpeedUp.SetActive(true);
             moveSpeed = 24.0f;
             isBuffSp =true;
-            Invoke("ItemSpeedFinish", 7.0f);
+            Invoke("ItemSpeedFinish", 10.0f);
         }
         if(tagName == "ItemFastShot")
         {
             buffFastShotUp.SetActive(true);
-            canNomalCoolTime = 10;
-            canStrongCoolTime = 30;
+            canNomalCoolTime = 5;
+            canStrongCoolTime = 20;
             isBuffFs = true;
-            Invoke("ItemFastShotFinish", 5.0f);
+            Invoke("ItemFastShotFinish", 7.0f);
         }
         if (tagName == "ItemGage")
         {
