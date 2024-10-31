@@ -19,7 +19,7 @@ public class BlockScript_ren : MonoBehaviour
     void Start()
     {
         myColor = this.gameObject.GetComponent<Renderer>().material.color;
-        randomNum = Random.Range(0, 5);　// ※ 0～4の範囲でランダムな整数値が返る
+        randomNum = Random.Range(0, 4);　// ※ 0～3の範囲でランダムな整数値が返る
     }
     //private void OnCollisionEnter(Collision collision)
     //{
